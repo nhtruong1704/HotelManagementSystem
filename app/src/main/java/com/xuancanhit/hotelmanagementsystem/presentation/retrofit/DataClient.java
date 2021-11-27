@@ -76,6 +76,7 @@ public interface DataClient {
     Call<String> UpdateAdminData(@Field("AdminId") String AdminId,
                                  @Field("AdminEmail") String AdminEmail,
                                  @Field("AdminName") String AdminName,
+                                 @Field("AdminPhone") String AdminPhone,
                                  @Field("AdminAvatar") String AdminAvatar,
                                  @Field("AdminCurrentAvatar") String AdminCurrentAvatar);
 //

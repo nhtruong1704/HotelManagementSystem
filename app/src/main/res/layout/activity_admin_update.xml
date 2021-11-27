@@ -88,8 +88,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/parent"
-        android:layout_marginTop="@dimen/loginViewsMargin"
-        android:paddingBottom="50dp">
+        android:layout_marginTop="@dimen/loginViewsMargin">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edt_admin_update_name"
@@ -97,6 +96,20 @@
             android:drawableStart="@drawable/ic_baseline_person_pin_24"
             android:drawableTint="?attr/colorControlNormal"
             android:hint="Name"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/parent"
+        android:layout_marginTop="@dimen/loginViewsMargin"
+        android:paddingBottom="50dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_admin_update_phone"
+            style="@style/modifiedEditText"
+            android:drawableStart="@drawable/ic_baseline_phone_iphone_24"
+            android:drawableTint="?attr/colorControlNormal"
+            android:hint="Phone"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 

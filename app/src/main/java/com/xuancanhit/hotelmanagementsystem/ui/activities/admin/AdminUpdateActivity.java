@@ -54,12 +54,12 @@ public class AdminUpdateActivity extends AppCompatActivity {
     String realPath = "";
     Uri imageUri;
 
-    EditText edtAdminUpdateEmail, edtAdminUpdateName;
+    EditText edtAdminUpdateEmail, edtAdminUpdateName, edtAdminUpdatePhone;
     Button btnAdminUpdateTakePhoto, btnAdminUpdateChoosePhoto, btnAdminUpdateSave, btnAdminUpdateDelete, btnAdminUpdateExit, btnAdminChangePassword;
     ImageView ivAdminUpdateAvatar, ivAdminUpdateExit;
 
     ArrayList<Admin> adminArr;
-    String adminEmail, adminName, adminAvatar;
+    String adminEmail, adminName, adminAvatar, adminPhone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,6 +120,7 @@ public class AdminUpdateActivity extends AppCompatActivity {
                 if (isEmailValid(edtAdminUpdateEmail)) {
                     adminName = edtAdminUpdateName.getText().toString();
                     adminEmail = edtAdminUpdateEmail.getText().toString();
+                    adminPhone = edtAdminUpdatePhone.getText().toString();
                     if (adminName.length() > 0 && adminEmail.length() > 0) {
                         if (!realPath.equals("")) {
                             uploadInfoWithPhoto();
@@ -264,16 +265,12 @@ public class AdminUpdateActivity extends AppCompatActivity {
             }
         }
 
-//        if (realPath.equals("")) {
-//            newAvatar = "";
-//        } else {
-//            newAvatar = APIUtils.BASE_URL + "admin/images/" + adminAvatar;
-//        }
 
         DataClient insertData = APIUtils.getData();
-        Call<String> callbackInfo = insertData.UpdateAdminData(adminArr.get(0).getAdId(), adminEmail, adminName, newAvatar, currentAvatar);
+        Call<String> callbackInfo = insertData.UpdateAdminData(adminArr.get(0).getAdId(), adminEmail, adminName, adminPhone, newAvatar, currentAvatar);
         adminArr.get(0).setAdEmail(adminEmail);
         adminArr.get(0).setAdName(adminName);
+        adminArr.get(0).setAdPhone(adminPhone);
         adminArr.get(0).setAdAvatar(newAvatar);
         callbackInfo.enqueue(new Callback<String>() {
             @Override
@@ -299,6 +296,7 @@ public class AdminUpdateActivity extends AppCompatActivity {
         adminArr = intent.getParcelableArrayListExtra("ADMIN_DATA_FROM_MENU_TO_UPDATE");
         edtAdminUpdateName.setText(adminArr.get(0).getAdName());
         edtAdminUpdateEmail.setText(adminArr.get(0).getAdEmail());
+        edtAdminUpdatePhone.setText(adminArr.get(0).getAdPhone());
         if (!adminArr.get(0).getAdAvatar().equals("")) {
             Picasso.get()
                     .load(adminArr.get(0).getAdAvatar())
@@ -373,6 +371,7 @@ public class AdminUpdateActivity extends AppCompatActivity {
     private void initUI() {
         edtAdminUpdateEmail = findViewById(R.id.edt_admin_update_email);
         edtAdminUpdateName = findViewById(R.id.edt_admin_update_name);
+        edtAdminUpdatePhone = findViewById(R.id.edt_admin_update_phone);
         btnAdminUpdateChoosePhoto = findViewById(R.id.btn_admin_update_choose_photo);
         btnAdminUpdateTakePhoto = findViewById(R.id.btn_admin_update_take_photo);
         btnAdminUpdateSave = findViewById(R.id.btn_admin_update_save);
