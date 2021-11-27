@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.xuancanhit.hotelmanagementsystem.ui.activities.customer.CustomerLoginActivity;
+
 public class MainActivity extends AppCompatActivity {
     //Time Splash before run app
     int splash_time = 1500;
