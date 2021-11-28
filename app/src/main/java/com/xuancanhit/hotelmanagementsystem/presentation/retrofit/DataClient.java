@@ -79,21 +79,21 @@ public interface DataClient {
                                  @Field("AdminPhone") String AdminPhone,
                                  @Field("AdminAvatar") String AdminAvatar,
                                  @Field("AdminCurrentAvatar") String AdminCurrentAvatar);
-//
-//    @FormUrlEncoded
-//    @POST("admin/forgotPassword.php")
-//    Call<String> ForgotPasswordAdminData(@Field("AdminId") String AdminId,
-//                                         @Field("AdminEmail") String AdminEmail,
-//                                         @Field("AdminNewPassword") String AdminNewPassword);
-//
+
+    @FormUrlEncoded
+    @POST("admin/forgotPassword.php")
+    Call<String> ForgotPasswordAdminData(@Field("AdminId") String AdminId,
+                                         @Field("AdminEmail") String AdminEmail,
+                                         @Field("AdminNewPassword") String AdminNewPassword);
+
     @GET("admin/delete.php")
     Call<String> DeleteAdminData(@Query("AdminId") String AdminId, @Query("AdminAvatar") String AdminAvatar);
-//
-//    @FormUrlEncoded
-//    @POST("admin/changePassword.php")
-//    Call<String> ChangePasswordAdminData(@Field("AdminId") String AdminId,
-//                                         @Field("AdminNewPassword") String AdminNewPassword);
-//
+
+    @FormUrlEncoded
+    @POST("admin/changePassword.php")
+    Call<String> ChangePasswordAdminData(@Field("AdminId") String AdminId,
+                                         @Field("AdminNewPassword") String AdminNewPassword);
+
 //    //Admin Manager
 //    //Add Student
 //    @FormUrlEncoded

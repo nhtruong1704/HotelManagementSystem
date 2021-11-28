@@ -78,9 +78,9 @@ public class AdminLoginActivity extends AppCompatActivity {
         tvAdminLoginForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(AdminLoginActivity.this, AdminForgotPassword.class);
-//                startActivity(intent);
-//                finish();
+                Intent intent = new Intent(AdminLoginActivity.this, AdminForgotPasswordActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 

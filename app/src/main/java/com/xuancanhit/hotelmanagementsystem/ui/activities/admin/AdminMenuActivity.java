@@ -142,10 +142,10 @@ public class AdminMenuActivity extends AppCompatActivity {
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.it_ad_nav_dra_menu_change_password:
-//                        Intent intent1 = new Intent(AdminMenuActivity.this, AdminChangePasswordActivity.class);
-//                        //Replace
-//                        intent1.putExtra("ADMIN_DATA_FROM_UPDATE_TO_CHANGE_PASSWORD", adminArr);
-//                        startActivityForResult(intent1, RESULT_OK);
+                        Intent intent1 = new Intent(AdminMenuActivity.this, AdminChangePasswordActivity.class);
+                        //Replace
+                        intent1.putExtra("ADMIN_DATA_FROM_UPDATE_TO_CHANGE_PASSWORD", adminArr);
+                        startActivityForResult(intent1, RESULT_OK);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.it_ad_nav_dra_menu_logout:

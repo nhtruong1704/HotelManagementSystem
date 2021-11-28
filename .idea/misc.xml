@@ -5,7 +5,9 @@
       <map>
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.5734375" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/drawable/ic_launcher_background.xml" value="0.4009259259259259" />
+        <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/activity_admin_change_password.xml" value="0.5322916666666667" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/activity_admin_customer_view_all.xml" value="0.5182291666666666" />
+        <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/activity_admin_forgot_password.xml" value="0.5322916666666667" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/activity_admin_login.xml" value="0.5322916666666667" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/activity_admin_menu.xml" value="0.3046875" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/activity_admin_update.xml" value="0.67" />
