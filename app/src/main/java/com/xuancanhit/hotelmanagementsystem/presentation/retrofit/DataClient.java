@@ -109,9 +109,9 @@ public interface DataClient {
 //                                     @Field("StudentActive") String StudentActive,
 //                                     @Field("StudentAvatar") String StudentAvatar);
 //
-//    //View All
-//    @POST("admin/viewAllStu.php")
-//    Call<List<Student>> AdminViewAllCustomerData();
+    //View All
+    @POST("admin/viewAllCus.php")
+    Call<List<Customer>> AdminViewAllCustomerData();
 //
 //    //Update
 //    @FormUrlEncoded

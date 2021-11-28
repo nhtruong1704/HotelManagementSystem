@@ -68,7 +68,7 @@ public class AdminMenuActivity extends AppCompatActivity {
         viewCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(AdminMenuActivity.this, AdminCustomerViewAllActivity.class));
+                startActivity(new Intent(AdminMenuActivity.this, AdminCustomerViewAllActivity.class));
             }
         });
 

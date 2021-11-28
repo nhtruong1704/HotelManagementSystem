@@ -5,17 +5,20 @@
       <map>
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.5734375" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/drawable/ic_launcher_background.xml" value="0.4009259259259259" />
+        <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/activity_admin_customer_view_all.xml" value="0.5182291666666666" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/activity_admin_login.xml" value="0.5322916666666667" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/activity_admin_menu.xml" value="0.3046875" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/activity_admin_update.xml" value="0.67" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/activity_customer_login.xml" value="0.33" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/activity_customer_menu.xml" value="0.3234375" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/admin_app_bar_main.xml" value="0.5322916666666667" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/admin_home.xml" value="0.3046875" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/customer_home.xml" value="0.33" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/customer_nav_header.xml" value="0.3234375" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/layout_admin_login.xml" value="0.3046875" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/layout_customer_login.xml" value="0.5572916666666666" />
+        <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/list_item_customer.xml" value="0.5" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/student_app_bar_main.xml" value="0.3234375" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/student_home.xml" value="0.3234375" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/menu/admin_nav_drawer_menu.xml" value="0.3234375" />

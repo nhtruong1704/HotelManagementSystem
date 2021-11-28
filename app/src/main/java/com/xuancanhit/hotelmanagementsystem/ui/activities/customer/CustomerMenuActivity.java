@@ -210,13 +210,13 @@ public class CustomerMenuActivity extends AppCompatActivity {
         if (!customerArr.get(0).getCusAvatar().equals("")) {
             Picasso.get()
                     .load(customerArr.get(0).getCusAvatar())
-                    .placeholder(R.drawable.graduated)
-                    .error(R.drawable.graduated)
+                    .placeholder(R.drawable.review)
+                    .error(R.drawable.review)
                     .into(ivCusAvatar);
             Picasso.get()
                     .load(customerArr.get(0).getCusAvatar())
-                    .placeholder(R.drawable.graduated)
-                    .error(R.drawable.graduated)
+                    .placeholder(R.drawable.review)
+                    .error(R.drawable.review)
                     .into(ivCusNavHeader);
         } else {
             if (!customerArr.get(0).getCusGender().equals("-1")) {
@@ -228,8 +228,8 @@ public class CustomerMenuActivity extends AppCompatActivity {
                     ivCusNavHeader.setImageResource(R.drawable.female);
                 }
             } else {
-                ivCusAvatar.setImageResource(R.drawable.graduated);
-                ivCusNavHeader.setImageResource(R.drawable.graduated);
+                ivCusAvatar.setImageResource(R.drawable.review);
+                ivCusNavHeader.setImageResource(R.drawable.review);
             }
         }
 
@@ -247,7 +247,7 @@ public class CustomerMenuActivity extends AppCompatActivity {
     }
 
     private void initUI() {
-        ivCusAvatar = findViewById(R.id.iv_stu_avt);
+        ivCusAvatar = findViewById(R.id.iv_cus_avt);
         tvCusName = findViewById(R.id.tv_stu_name);
 
         btnCusLogout = findViewById(R.id.btn_stu_logout);

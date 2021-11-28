@@ -18,6 +18,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.activities.admin.AdminCustomerViewAllActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.admin.AdminUpdateActivity"
             android:exported="false" />
         <activity
