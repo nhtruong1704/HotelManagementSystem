@@ -13,6 +13,9 @@ import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 import com.xuancanhit.hotelmanagementsystem.R;
 import com.xuancanhit.hotelmanagementsystem.presentation.model.Admin;
+import com.xuancanhit.hotelmanagementsystem.ui.activities.admin.customer.AdminCustomerAddActivity;
+import com.xuancanhit.hotelmanagementsystem.ui.activities.admin.customer.AdminCustomerViewAllActivity;
+import com.xuancanhit.hotelmanagementsystem.ui.activities.admin.room.AdminRoomViewAllActivity;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
@@ -33,7 +36,7 @@ public class AdminMenuActivity extends AppCompatActivity {
     Toolbar toolbar;
     NavigationView navigationView;
 
-    Button addCustomer, viewCustomer, noticeCustomer, reportCustomer, btnHomeMenuLogout, btnAdminEdit;
+    Button viewListRoom, viewCustomer, noticeCustomer, reportCustomer, btnHomeMenuLogout, btnAdminEdit;
     ImageView ivAdminAvt, ivAdNavHeader;
     TextView tvAdminName, tvAdNavHeaderName, tvAdNavHeaderEmail;
     ArrayList<Admin> adminArr;
@@ -73,10 +76,10 @@ public class AdminMenuActivity extends AppCompatActivity {
         });
 
         //Add Customer Button
-        addCustomer.setOnClickListener(new View.OnClickListener() {
+        viewListRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(AdminMenuActivity.this, AdminCustomerAddActivity.class));
+                startActivity(new Intent(AdminMenuActivity.this, AdminRoomViewAllActivity.class));
             }
         });
 
@@ -181,7 +184,7 @@ public class AdminMenuActivity extends AppCompatActivity {
         ivAdminAvt = findViewById(R.id.iv_admin_avt);
         tvAdminName = findViewById(R.id.tv_admin_name);
         btnHomeMenuLogout = findViewById(R.id.btn_home_menu_logout);
-        addCustomer = findViewById(R.id.btn_student_add);
+        viewListRoom = findViewById(R.id.btn_admin_menu_list_room);
         viewCustomer = findViewById(R.id.btn_student_view_all);
         noticeCustomer = findViewById(R.id.btn_student_notice);
         reportCustomer = findViewById(R.id.btn_student_report);

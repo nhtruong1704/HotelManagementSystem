@@ -14,6 +14,7 @@
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/activity_admin_forgot_password.xml" value="0.5322916666666667" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/activity_admin_login.xml" value="0.5322916666666667" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/activity_admin_menu.xml" value="0.3046875" />
+        <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/activity_admin_room_view_all.xml" value="0.34322916666666664" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/activity_admin_update.xml" value="0.67" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/activity_customer_login.xml" value="0.33" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/activity_customer_menu.xml" value="0.3234375" />
@@ -27,6 +28,7 @@
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/layout_admin_login.xml" value="0.3046875" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/layout_customer_login.xml" value="0.5572916666666666" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/list_item_customer.xml" value="0.5" />
+        <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/list_item_room.xml" value="0.5572916666666666" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/student_app_bar_main.xml" value="0.3234375" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/layout/student_home.xml" value="0.3234375" />
         <entry key="..\:/Users/daota/AndroidStudioProjects/HotelManagementSystem/app/src/main/res/menu/admin_nav_drawer_menu.xml" value="0.3234375" />

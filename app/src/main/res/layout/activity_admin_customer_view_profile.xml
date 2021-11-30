@@ -7,7 +7,7 @@
     android:background="#fff"
     android:orientation="vertical"
     android:padding="5dp"
-    tools:context=".ui.activities.admin.AdminCustomerViewProfileActivity">
+    tools:context=".ui.activities.admin.customer.AdminCustomerViewProfileActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

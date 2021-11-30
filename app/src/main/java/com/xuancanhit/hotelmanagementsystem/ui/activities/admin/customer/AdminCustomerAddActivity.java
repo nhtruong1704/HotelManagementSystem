@@ -1,4 +1,4 @@
-package com.xuancanhit.hotelmanagementsystem.ui.activities.admin;
+package com.xuancanhit.hotelmanagementsystem.ui.activities.admin.customer;
 
 import com.xuancanhit.hotelmanagementsystem.R;
 import com.xuancanhit.hotelmanagementsystem.presentation.model.Customer;

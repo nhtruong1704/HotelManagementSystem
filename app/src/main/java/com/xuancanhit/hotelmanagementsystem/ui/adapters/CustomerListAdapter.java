@@ -14,12 +14,11 @@ import android.widget.Toast;
 import com.xuancanhit.hotelmanagementsystem.R;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.xuancanhit.hotelmanagementsystem.presentation.model.Customer;
-import com.xuancanhit.hotelmanagementsystem.ui.activities.admin.AdminCustomerViewProfileActivity;
+import com.xuancanhit.hotelmanagementsystem.ui.activities.admin.customer.AdminCustomerViewProfileActivity;
 import com.xuancanhit.hotelmanagementsystem.ui.interfaces.ItemClickListener;
 
 import java.util.ArrayList;

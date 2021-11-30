@@ -7,27 +7,27 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Room implements Parcelable {
-    @SerializedName("roomId")
+    @SerializedName("RoomId")
     @Expose
     private String roomId;
 
-    @SerializedName("roomName")
+    @SerializedName("RoomName")
     @Expose
     private String roomName;
 
-    @SerializedName("roomPrice")
+    @SerializedName("RoomPrice")
     @Expose
     private String roomPrice;
 
-    @SerializedName("roomDes")
+    @SerializedName("RoomDes")
     @Expose
     private String roomDes;
 
-    @SerializedName("roomImage")
+    @SerializedName("RoomImage")
     @Expose
     private String roomImage;
 
-    @SerializedName("roomHousekeepingId")
+    @SerializedName("RoomHousekeepingId")
     @Expose
     private String roomHousekeepingId;
 

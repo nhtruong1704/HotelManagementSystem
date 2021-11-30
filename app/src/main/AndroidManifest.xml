@@ -18,13 +18,19 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.activities.admin.AdminCustomerViewProfileActivity"
+            android:name=".ui.activities.admin.room.AdminRoomAddActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.admin.AdminCustomerUpdateActivity"
+            android:name=".ui.activities.admin.room.AdminRoomViewAllActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.admin.AdminCustomerAddActivity"
+            android:name=".ui.activities.admin.customer.AdminCustomerViewProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.customer.AdminCustomerUpdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.customer.AdminCustomerAddActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activities.admin.AdminForgotPasswordActivity"
@@ -33,7 +39,7 @@
             android:name=".ui.activities.admin.AdminChangePasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.admin.AdminCustomerViewAllActivity"
+            android:name=".ui.activities.admin.customer.AdminCustomerViewAllActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activities.admin.AdminUpdateActivity"

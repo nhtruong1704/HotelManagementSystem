@@ -1,4 +1,4 @@
-package com.xuancanhit.hotelmanagementsystem.ui.activities.admin;
+package com.xuancanhit.hotelmanagementsystem.ui.activities.admin.customer;
 
 import com.squareup.picasso.Picasso;
 import com.xuancanhit.hotelmanagementsystem.R;

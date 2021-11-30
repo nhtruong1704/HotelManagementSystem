@@ -2,6 +2,7 @@ package com.xuancanhit.hotelmanagementsystem.presentation.retrofit;
 
 import com.xuancanhit.hotelmanagementsystem.presentation.model.Admin;
 import com.xuancanhit.hotelmanagementsystem.presentation.model.Customer;
+import com.xuancanhit.hotelmanagementsystem.presentation.model.Room;
 
 import java.util.List;
 
@@ -108,9 +109,13 @@ public interface DataClient {
                                      @Field("CustomerDOB") String CustomerDOB,
                                      @Field("CustomerGender") String CustomerGender);
 
-    //View All
+    //View All Customer
     @POST("admin/viewAllCus.php")
     Call<List<Customer>> AdminViewAllCustomerData();
+
+    //View All
+    @POST("admin/rooms/viewAllRoom.php")
+    Call<List<Room>> AdminViewAllRoomData();
 
     //Update
     @FormUrlEncoded

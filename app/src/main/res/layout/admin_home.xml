@@ -127,16 +127,16 @@
                 app:cardElevation="5dp">
 
                 <Button
-                    android:id="@+id/btn_student_add"
+                    android:id="@+id/btn_admin_menu_list_room"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="?attr/selectableItemBackground"
-                    android:drawableStart="@drawable/ic_baseline_person_add_24"
+                    android:drawableStart="@drawable/ic_baseline_meeting_room_24"
                     android:drawablePadding="10dp"
                     android:drawableTint="#fff"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:text="Add\nStudent"
+                    android:text="List Room"
                     android:textColor="#fff"
                     android:textSize="18sp"
                     android:textStyle="bold" />
