@@ -84,7 +84,7 @@ public class AdminCustomerViewAllActivity extends AppCompatActivity {
         ibStuAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(AdminCustomerViewAllActivity.this, AdminCustomerAddActivity.class));
+                startActivity(new Intent(AdminCustomerViewAllActivity.this, AdminCustomerAddActivity.class));
             }
         });
 

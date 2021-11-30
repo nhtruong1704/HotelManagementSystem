@@ -6,13 +6,13 @@
             android:icon="@drawable/ic_baseline_space_dashboard_24"
             android:title="Dashboard" />
         <item
-            android:id="@+id/it_ad_nav_dra_menu_add_student"
+            android:id="@+id/it_ad_nav_dra_menu_add_customer"
             android:icon="@drawable/ic_baseline_person_add_24"
-            android:title="Add Student" />
+            android:title="Add Customer" />
         <item
-            android:id="@+id/it_ad_nav_dra_menu_view_all"
+            android:id="@+id/it_ad_nav_dra_menu_view_all_customer"
             android:icon="@drawable/ic_baseline_format_list_bulleted_24"
-            android:title="View List Student" />
+            android:title="View List Client" />
         <item
             android:id="@+id/it_ad_nav_dra_menu_notice"
             android:icon="@drawable/ic_baseline_notification_add_24"

@@ -18,6 +18,15 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.activities.admin.AdminCustomerViewProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.AdminCustomerUpdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.AdminCustomerAddActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.admin.AdminForgotPasswordActivity"
             android:exported="false" />
         <activity

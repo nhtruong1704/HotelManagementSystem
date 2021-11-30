@@ -119,12 +119,12 @@ public class AdminMenuActivity extends AppCompatActivity {
 //                        loadFragment(fragment);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
-                    case R.id.it_ad_nav_dra_menu_add_student:
-//                        startActivity(new Intent(AdminMenuActivity.this, AdminCustomerAddActivity.class));
+                    case R.id.it_ad_nav_dra_menu_add_customer:
+                        startActivity(new Intent(AdminMenuActivity.this, AdminCustomerAddActivity.class));
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
-                    case R.id.it_ad_nav_dra_menu_view_all:
-//                        startActivity(new Intent(AdminMenuActivity.this, AdminCustomerViewAllActivity.class));
+                    case R.id.it_ad_nav_dra_menu_view_all_customer:
+                        startActivity(new Intent(AdminMenuActivity.this, AdminCustomerViewAllActivity.class));
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.it_ad_nav_dra_menu_notice:
@@ -136,9 +136,9 @@ public class AdminMenuActivity extends AppCompatActivity {
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.it_ad_nav_dra_menu_admin_profile:
-//                        Intent intent = new Intent(AdminMenuActivity.this, AdminUpdateActivity.class);
-//                        intent.putExtra("ADMIN_DATA_FROM_MENU_TO_UPDATE", adminArr);
-//                        startActivityForResult(intent, ADMIN_UPDATE_ACTIVITY);
+                        Intent intent = new Intent(AdminMenuActivity.this, AdminUpdateActivity.class);
+                        intent.putExtra("ADMIN_DATA_FROM_MENU_TO_UPDATE", adminArr);
+                        startActivityForResult(intent, ADMIN_UPDATE_ACTIVITY);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.it_ad_nav_dra_menu_change_password:

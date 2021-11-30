@@ -14,10 +14,12 @@ import android.widget.Toast;
 import com.xuancanhit.hotelmanagementsystem.R;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.xuancanhit.hotelmanagementsystem.presentation.model.Customer;
+import com.xuancanhit.hotelmanagementsystem.ui.activities.admin.AdminCustomerViewProfileActivity;
 import com.xuancanhit.hotelmanagementsystem.ui.interfaces.ItemClickListener;
 
 import java.util.ArrayList;
@@ -69,6 +71,9 @@ public class CustomerListAdapter extends RecyclerView.Adapter<CustomerListAdapte
         if(customer.getCusIsVip().equals("1")) {
             holder.ivCusVip.setImageResource(R.drawable.vip_card);
         }
+        else {
+            holder.ivCusVip.setImageResource(R.drawable.transparent);
+        }
         
 
 
@@ -82,15 +87,15 @@ public class CustomerListAdapter extends RecyclerView.Adapter<CustomerListAdapte
                 if (isLongClick) {
                     Toast.makeText(context, "Customer " + customer.getCusName(), Toast.LENGTH_SHORT).show();
                 } else {
-//                    Intent intent = new Intent(view.getContext(), AdminCustomerViewProfileActivity.class);
-//
-//                    Bundle bundle = new Bundle();
-//
-//                    bundle.putParcelableArrayList("STUDENT_DATA_ARRAY", customerArr);
-//                    bundle.putInt("STUDENT_DATA_POSITION", position);
-//                    intent.putExtra("STUDENT_DATA_FROM_STUDENT_ADAPTER_TO_AD_STU_VIEW_PROFILE", bundle);
-//                    view.getContext().startActivity(intent);
-//                    ((Activity) view.getContext()).finish();
+                    Intent intent = new Intent(view.getContext(), AdminCustomerViewProfileActivity.class);
+
+                    Bundle bundle = new Bundle();
+
+                    bundle.putParcelableArrayList("STUDENT_DATA_ARRAY", customerArr);
+                    bundle.putInt("STUDENT_DATA_POSITION", position);
+                    intent.putExtra("STUDENT_DATA_FROM_STUDENT_ADAPTER_TO_AD_STU_VIEW_PROFILE", bundle);
+                    view.getContext().startActivity(intent);
+                    ((Activity) view.getContext()).finish();
                 }
             }
         });

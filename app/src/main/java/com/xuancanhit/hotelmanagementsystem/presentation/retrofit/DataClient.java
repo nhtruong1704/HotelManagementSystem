@@ -17,49 +17,49 @@ import retrofit2.http.Query;
 
 //Config Method Send Data To Server
 public interface DataClient {
-//    //Student
+//    //Customer
 //    @FormUrlEncoded
 //    @POST("insert.php")
-//    Call<String> InsertCustomerData(@Field("StudentName") String StudentName,
-//                                   @Field("StudentEmail") String StudentEmail,
-//                                   @Field("StudentPassword") String StudentPassword,
-//                                   @Field("StudentAvatar") String StudentAvatar);
+//    Call<String> InsertCustomerData(@Field("CustomerName") String CustomerName,
+//                                   @Field("CustomerEmail") String CustomerEmail,
+//                                   @Field("CustomerPassword") String CustomerPassword,
+//                                   @Field("CustomerAvatar") String CustomerAvatar);
 //
-//    @Multipart
-//    @POST("uploadImage.php")
-//    Call<String> UploadStudentPhoto(@Part MultipartBody.Part photo);
+    @Multipart
+    @POST("uploadImage.php")
+    Call<String> UploadCustomerPhoto(@Part MultipartBody.Part photo);
 
     @FormUrlEncoded
     @POST("login.php")
-    Call<List<Customer>> LoginCustomerData(@Field("CustomerEmail") String StudentEmail,
-                                          @Field("CustomerPassword") String StudentPassword);
+    Call<List<Customer>> LoginCustomerData(@Field("CustomerEmail") String CustomerEmail,
+                                          @Field("CustomerPassword") String CustomerPassword);
 
 //    @FormUrlEncoded
 //    @POST("update.php")
-//    Call<String> UpdateCustomerData(@Field("StudentId") String StudentId,
-//                                   @Field("StudentNo") String StudentNo,
-//                                   @Field("StudentName") String StudentName,
-//                                   @Field("StudentDOB") String StudentDOB,
-//                                   @Field("StudentClass") String StudentClass,
-//                                   @Field("StudentPhone") String StudentPhone,
-//                                   @Field("StudentEmail") String StudentEmail,
-//                                   @Field("StudentAvatar") String StudentAvatar,
-//                                   @Field("StudentGender") String StudentGender,
-//                                   @Field("StudentCurrentAvatar") String StudentCurrentAvatar);
-//
-//    @GET("delete.php")
-//    Call<String> DeleteCustomerData(@Query("StudentId") String StudentId, @Query("StudentAvatar") String StudentAvatar);
+//    Call<String> UpdateCustomerData(@Field("CustomerId") String CustomerId,
+//                                   @Field("CustomerNo") String CustomerNo,
+//                                   @Field("CustomerName") String CustomerName,
+//                                   @Field("CustomerDOB") String CustomerDOB,
+//                                   @Field("CustomerClass") String CustomerClass,
+//                                   @Field("CustomerPhone") String CustomerPhone,
+//                                   @Field("CustomerEmail") String CustomerEmail,
+//                                   @Field("CustomerAvatar") String CustomerAvatar,
+//                                   @Field("CustomerGender") String CustomerGender,
+//                                   @Field("CustomerCurrentAvatar") String CustomerCurrentAvatar);
+
+    @GET("delete.php")
+    Call<String> DeleteCustomerData(@Query("CustomerId") String CustomerId, @Query("CustomerAvatar") String CustomerAvatar);
 //
 //    @FormUrlEncoded
 //    @POST("changePassword.php")
-//    Call<String> ChangePasswordCustomerData(@Field("StudentId") String StudentId,
-//                                           @Field("StudentNewPassword") String StudentNewPassword);
+//    Call<String> ChangePasswordCustomerData(@Field("CustomerId") String CustomerId,
+//                                           @Field("CustomerNewPassword") String CustomerNewPassword);
 //
 //    //Report
 //    @FormUrlEncoded
 //    @POST("report.php")
-//    Call<String> ReportCustomerData(@Field("StudentId") String StudentId,
-//                                   @Field("StudentReport") String StudentReport);
+//    Call<String> ReportCustomerData(@Field("CustomerId") String CustomerId,
+//                                   @Field("CustomerReport") String CustomerReport);
 //
     //Admin
     @FormUrlEncoded
@@ -94,49 +94,55 @@ public interface DataClient {
     Call<String> ChangePasswordAdminData(@Field("AdminId") String AdminId,
                                          @Field("AdminNewPassword") String AdminNewPassword);
 
-//    //Admin Manager
-//    //Add Student
-//    @FormUrlEncoded
-//    @POST("admin/addStudent.php")
-//    Call<String> AdminAddCustomerData(@Field("StudentNo") String StudentNo,
-//                                     @Field("StudentName") String StudentName,
-//                                     @Field("StudentDOB") String StudentDOB,
-//                                     @Field("StudentClass") String StudentClass,
-//                                     @Field("StudentGender") String StudentGender,
-//                                     @Field("StudentPhone") String StudentPhone,
-//                                     @Field("StudentEmail") String StudentEmail,
-//                                     @Field("StudentPassword") String StudentPassword,
-//                                     @Field("StudentActive") String StudentActive,
-//                                     @Field("StudentAvatar") String StudentAvatar);
-//
+    //Admin Manager
+    //Add Customer
+    @FormUrlEncoded
+    @POST("admin/addCustomer.php")
+    Call<String> AdminAddCustomerData(@Field("CustomerName") String CustomerName,
+                                     @Field("CustomerPhone") String CustomerPhone,
+                                     @Field("CustomerAddress") String CustomerAddress,
+                                     @Field("CustomerEmail") String CustomerEmail,
+                                     @Field("CustomerIsVip") String CustomerIsVip,
+                                     @Field("CustomerPassword") String CustomerPassword,
+                                     @Field("CustomerAvatar") String CustomerAvatar,
+                                     @Field("CustomerDOB") String CustomerDOB,
+                                     @Field("CustomerGender") String CustomerGender);
+
     //View All
     @POST("admin/viewAllCus.php")
     Call<List<Customer>> AdminViewAllCustomerData();
-//
-//    //Update
-//    @FormUrlEncoded
-//    @POST("admin/updateStudent.php")
-//    Call<String> AdminUpdateCustomerData(@Field("StudentId") String StudentId,
-//                                        @Field("StudentNo") String StudentNo,
-//                                        @Field("StudentName") String StudentName,
-//                                        @Field("StudentDOB") String StudentDOB,
-//                                        @Field("StudentClass") String StudentClass,
-//                                        @Field("StudentPhone") String StudentPhone,
-//                                        @Field("StudentEmail") String StudentEmail,
-//                                        @Field("StudentAvatar") String StudentAvatar,
-//                                        @Field("StudentGender") String StudentGender,
-//                                        @Field("StudentPassword") String StudentPassword,
-//                                        @Field("StudentActive") String StudentActive,
-//                                        @Field("StudentCurrentAvatar") String StudentCurrentAvatar);
+
+    //Update
+    @FormUrlEncoded
+    @POST("admin/updateCustomer.php")
+    Call<String> AdminUpdateCustomerData(@Field("CustomerId") String CustomerId,
+                                         @Field("CustomerName") String CustomerName,
+                                         @Field("CustomerPhone") String CustomerPhone,
+                                         @Field("CustomerAddress") String CustomerAddress,
+                                         @Field("CustomerEmail") String CustomerEmail,
+                                         @Field("CustomerIsVip") String CustomerIsVip,
+                                         @Field("CustomerPassword") String CustomerPassword,
+                                         @Field("CustomerAvatar") String CustomerAvatar,
+                                         @Field("CustomerCurrentAvatar") String CustomerCurrentAvatar,
+                                         @Field("CustomerDOB") String CustomerDOB,
+                                         @Field("CustomerGender") String CustomerGender);
+
+
+
+
+
+
+
+
 //
 //    //Send Notice
 //    @FormUrlEncoded
 //    @POST("admin/sendNotice.php")
-//    Call<String> AdminNoticeToCustomerData(@Field("StudentNotice") String StudentNotice);
+//    Call<String> AdminNoticeToCustomerData(@Field("CustomerNotice") String CustomerNotice);
 //
 //    //Reply
 //    @FormUrlEncoded
-//    @POST("admin/replyStudent.php")
-//    Call<String> AdminReplyCustomerData(@Field("StudentId") String StudentId,
-//                                       @Field("StudentReply") String StudentReply);
+//    @POST("admin/replyCustomer.php")
+//    Call<String> AdminReplyCustomerData(@Field("CustomerId") String CustomerId,
+//                                       @Field("CustomerReply") String CustomerReply);
 }
