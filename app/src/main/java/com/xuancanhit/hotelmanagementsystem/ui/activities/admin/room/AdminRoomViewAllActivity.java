@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -83,7 +84,7 @@ public class AdminRoomViewAllActivity extends AppCompatActivity {
         ibRoomAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(AdminRoomViewAllActivity.this, AdminRoomAddActivity.class));
+                startActivity(new Intent(AdminRoomViewAllActivity.this, AdminRoomAddActivity.class));
             }
         });
 

@@ -113,9 +113,7 @@ public interface DataClient {
     @POST("admin/viewAllCus.php")
     Call<List<Customer>> AdminViewAllCustomerData();
 
-    //View All
-    @POST("admin/rooms/viewAllRoom.php")
-    Call<List<Room>> AdminViewAllRoomData();
+
 
     //Update
     @FormUrlEncoded
@@ -132,6 +130,22 @@ public interface DataClient {
                                          @Field("CustomerDOB") String CustomerDOB,
                                          @Field("CustomerGender") String CustomerGender);
 
+
+    //View All
+    @POST("admin/room/viewAllRoom.php")
+    Call<List<Room>> AdminViewAllRoomData();
+
+    @FormUrlEncoded
+    @POST("admin/room/addRoom.php")
+    Call<String> AdminAddRoomData(
+                                      @Field("RoomName") String RoomName,
+                                      @Field("RoomPrice") String RoomPrice,
+                                      @Field("RoomDes") String RoomDes,
+                                      @Field("RoomImage") String RoomImage);
+
+    @Multipart
+    @POST("admin/room/uploadImage.php")
+    Call<String> UploadRoomPhoto(@Part MultipartBody.Part photo);
 
 
 

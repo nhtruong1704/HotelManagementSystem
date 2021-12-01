@@ -18,6 +18,12 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.activities.admin.room.AdminRoomUpdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.room.AdminRoomViewDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.admin.room.AdminRoomAddActivity"
             android:exported="false" />
         <activity
