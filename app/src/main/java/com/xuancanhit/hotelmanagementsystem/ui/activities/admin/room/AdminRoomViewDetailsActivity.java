@@ -61,13 +61,13 @@ public class AdminRoomViewDetailsActivity extends AppCompatActivity {
         btnAdRoomViewDetailsUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(AdminRoomViewDetailsActivity.this, AdminRoomUpdateActivity.class);
-//                Bundle bundle = new Bundle();
-//                bundle.putParcelableArrayList("ROOM_DATA_ARRAY", roomArr);
-//                bundle.putInt("ROOM_DATA_POSITION", position);
-//                intent.putExtra("ROOM_DATA_FROM_AD_STU_VIEW_PROFILE_TO_UPDATE", bundle);
-//                startActivity(intent);
-//                finish();
+                Intent intent = new Intent(AdminRoomViewDetailsActivity.this, AdminRoomUpdateActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelableArrayList("ROOM_DATA_ARRAY", roomArr);
+                bundle.putInt("ROOM_DATA_POSITION", position);
+                intent.putExtra("ROOM_DATA_FROM_AD_ROOM_VIEW_DETAILS_TO_UPDATE", bundle);
+                startActivity(intent);
+                finish();
             }
         });
 

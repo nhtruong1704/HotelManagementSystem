@@ -194,7 +194,7 @@ public class AdminRoomAddActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Log.d("Error Updated Room Photo", t.getMessage());
+                Log.d("Err Updated Room Photo", t.getMessage());
             }
         });
     }

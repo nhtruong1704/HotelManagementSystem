@@ -18,7 +18,7 @@ import retrofit2.http.Query;
 
 //Config Method Send Data To Server
 public interface DataClient {
-//    //Customer
+    //    //Customer
 //    @FormUrlEncoded
 //    @POST("insert.php")
 //    Call<String> InsertCustomerData(@Field("CustomerName") String CustomerName,
@@ -33,7 +33,7 @@ public interface DataClient {
     @FormUrlEncoded
     @POST("login.php")
     Call<List<Customer>> LoginCustomerData(@Field("CustomerEmail") String CustomerEmail,
-                                          @Field("CustomerPassword") String CustomerPassword);
+                                           @Field("CustomerPassword") String CustomerPassword);
 
 //    @FormUrlEncoded
 //    @POST("update.php")
@@ -50,7 +50,8 @@ public interface DataClient {
 
     @GET("delete.php")
     Call<String> DeleteCustomerData(@Query("CustomerId") String CustomerId, @Query("CustomerAvatar") String CustomerAvatar);
-//
+
+    //
 //    @FormUrlEncoded
 //    @POST("changePassword.php")
 //    Call<String> ChangePasswordCustomerData(@Field("CustomerId") String CustomerId,
@@ -100,19 +101,18 @@ public interface DataClient {
     @FormUrlEncoded
     @POST("admin/addCustomer.php")
     Call<String> AdminAddCustomerData(@Field("CustomerName") String CustomerName,
-                                     @Field("CustomerPhone") String CustomerPhone,
-                                     @Field("CustomerAddress") String CustomerAddress,
-                                     @Field("CustomerEmail") String CustomerEmail,
-                                     @Field("CustomerIsVip") String CustomerIsVip,
-                                     @Field("CustomerPassword") String CustomerPassword,
-                                     @Field("CustomerAvatar") String CustomerAvatar,
-                                     @Field("CustomerDOB") String CustomerDOB,
-                                     @Field("CustomerGender") String CustomerGender);
+                                      @Field("CustomerPhone") String CustomerPhone,
+                                      @Field("CustomerAddress") String CustomerAddress,
+                                      @Field("CustomerEmail") String CustomerEmail,
+                                      @Field("CustomerIsVip") String CustomerIsVip,
+                                      @Field("CustomerPassword") String CustomerPassword,
+                                      @Field("CustomerAvatar") String CustomerAvatar,
+                                      @Field("CustomerDOB") String CustomerDOB,
+                                      @Field("CustomerGender") String CustomerGender);
 
     //View All Customer
     @POST("admin/viewAllCus.php")
     Call<List<Customer>> AdminViewAllCustomerData();
-
 
 
     //Update
@@ -138,19 +138,28 @@ public interface DataClient {
     @FormUrlEncoded
     @POST("admin/room/addRoom.php")
     Call<String> AdminAddRoomData(
-                                      @Field("RoomName") String RoomName,
-                                      @Field("RoomPrice") String RoomPrice,
-                                      @Field("RoomDes") String RoomDes,
-                                      @Field("RoomImage") String RoomImage);
+            @Field("RoomName") String RoomName,
+            @Field("RoomPrice") String RoomPrice,
+            @Field("RoomDes") String RoomDes,
+            @Field("RoomImage") String RoomImage);
 
     @Multipart
     @POST("admin/room/uploadImage.php")
     Call<String> UploadRoomPhoto(@Part MultipartBody.Part photo);
 
+    @GET("admin/room/delete.php")
+    Call<String> DeleteRoomData(@Query("RoomId") String RoomId, @Query("RoomImage") String RoomImage);
 
 
-
-
+    //Update
+    @FormUrlEncoded
+    @POST("admin/room/updateRoom.php")
+    Call<String> AdminUpdateRoomData(@Field("RoomId") String RoomId,
+                                     @Field("RoomName") String RoomName,
+                                     @Field("RoomPrice") String RoomPrice,
+                                     @Field("RoomDes") String RoomDes,
+                                     @Field("RoomImage") String RoomImage,
+                                     @Field("RoomCurrentImage") String RoomCurrentImage);
 
 
 //
