@@ -65,10 +65,10 @@ public class CustomerLoginActivity extends AppCompatActivity {
         //Remember Me
         SharedPreferences loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         loginPrefsEditor = loginPreferences.edit();
-        boolean rememberMeCheck = loginPreferences.getBoolean("STUDENT_REMEMBER_ME", false);
+        boolean rememberMeCheck = loginPreferences.getBoolean("CUSTOMER_REMEMBER_ME", false);
         if (rememberMeCheck) {
-            edtCusLoginEmail.setText(loginPreferences.getString("STUDENT_EMAIL", ""));
-            edtCusLoginPassword.setText(loginPreferences.getString("STUDENT_PASSWORD", ""));
+            edtCusLoginEmail.setText(loginPreferences.getString("CUSTOMER_EMAIL", ""));
+            edtCusLoginPassword.setText(loginPreferences.getString("CUSTOMER_PASSWORD", ""));
             cbCusLoginRememberMe.setChecked(true);
         }
 
@@ -139,7 +139,7 @@ public class CustomerLoginActivity extends AppCompatActivity {
                     if (customerArrayList.size() > 0) {
 //                        Send Data and finish
                         Intent intent = new Intent(CustomerLoginActivity.this, CustomerMenuActivity.class);
-                        intent.putExtra("STUDENT_DATA_FROM_LOGIN_TO_MENU", customerArrayList);
+                        intent.putExtra("CUSTOMER_DATA_FROM_LOGIN_TO_MENU", customerArrayList);
                         startActivity(intent);
                         finish();
                         Toast.makeText(CustomerLoginActivity.this, "Welcome " + customerArrayList.get(0).getCusName(), Toast.LENGTH_SHORT).show();
@@ -157,9 +157,9 @@ public class CustomerLoginActivity extends AppCompatActivity {
 
     private void rememberMe() {
         if (cbCusLoginRememberMe.isChecked()) {
-            loginPrefsEditor.putBoolean("STUDENT_REMEMBER_ME", true);
-            loginPrefsEditor.putString("STUDENT_EMAIL", customerEmail);
-            loginPrefsEditor.putString("STUDENT_PASSWORD", customerPassword);
+            loginPrefsEditor.putBoolean("CUSTOMER_REMEMBER_ME", true);
+            loginPrefsEditor.putString("CUSTOMER_EMAIL", customerEmail);
+            loginPrefsEditor.putString("CUSTOMER_PASSWORD", customerPassword);
         } else {
             loginPrefsEditor.clear();
         }

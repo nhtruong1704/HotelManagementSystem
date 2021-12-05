@@ -15,6 +15,7 @@ import com.xuancanhit.hotelmanagementsystem.R;
 import com.xuancanhit.hotelmanagementsystem.presentation.model.Admin;
 import com.xuancanhit.hotelmanagementsystem.ui.activities.admin.customer.AdminCustomerAddActivity;
 import com.xuancanhit.hotelmanagementsystem.ui.activities.admin.customer.AdminCustomerViewAllActivity;
+import com.xuancanhit.hotelmanagementsystem.ui.activities.admin.fooditem.AdminFoodItemViewAllActivity;
 import com.xuancanhit.hotelmanagementsystem.ui.activities.admin.room.AdminRoomViewAllActivity;
 
 import android.annotation.SuppressLint;
@@ -87,7 +88,7 @@ public class AdminMenuActivity extends AppCompatActivity {
         noticeCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(AdminMenuActivity.this, AdminNoticeToCustomerActivity.class));
+                startActivity(new Intent(AdminMenuActivity.this, AdminFoodItemViewAllActivity.class));
             }
         });
 
@@ -131,7 +132,7 @@ public class AdminMenuActivity extends AppCompatActivity {
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.it_ad_nav_dra_menu_notice:
-//                        startActivity(new Intent(AdminMenuActivity.this, AdminNoticeToCustomerActivity.class));
+                        startActivity(new Intent(AdminMenuActivity.this, AdminFoodItemViewAllActivity.class));
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.it_ad_nav_dra_menu_report:

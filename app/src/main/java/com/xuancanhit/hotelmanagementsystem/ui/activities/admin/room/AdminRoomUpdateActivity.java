@@ -115,7 +115,7 @@ public class AdminRoomUpdateActivity extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(AdminRoomUpdateActivity.this);
                 builder.setIcon(R.drawable.ic_baseline_delete_24);
                 builder.setTitle("Delete this student account");
-                builder.setMessage("Are you sure want to delete account room " + roomArr.get(position).getRoomName() + "?");
+                builder.setMessage("Are you sure want to delete room " + roomArr.get(position).getRoomName() + "?");
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

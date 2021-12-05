@@ -18,6 +18,27 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.activities.customer.CustomerFoodItemViewAllActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.customer.CustomerRoomViewAllActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.customer.CustomerViewProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.fooditem.AdminFoodItemUpdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.fooditem.AdminFoodItemViewDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.fooditem.AdminFoodItemAddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.fooditem.AdminFoodItemViewAllActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.admin.room.AdminRoomUpdateActivity"
             android:exported="false" />
         <activity

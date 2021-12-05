@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context=".ui.activities.admin.fooditem.AdminFoodItemViewDetailsActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#fff">
+
+            <ImageView
+                android:id="@+id/iv_ad_food_item_view_details_exit"
+                android:layout_width="65dp"
+                android:layout_height="75dp"
+                android:padding="7dp"
+                android:src="@drawable/ic_baseline_arrow_back_ios_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Food Item Information"
+                android:textColor="?attr/colorControlNormal"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+            android:layout_margin="20dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_ad_food_item_view_details_avt"
+                    android:layout_width="320dp"
+                    android:layout_height="320dp"
+                    android:layout_marginTop="30dp"
+                    android:src="@drawable/diet" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:text="Food Name"
+                            android:textColor="@color/myColor8" />
+
+                        <TextView
+                            android:id="@+id/tv_ad_food_item_view_details_name"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="7"
+                            android:textColor="@color/myColor8" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:text="Price"
+                            android:textColor="@color/myColor8" />
+
+                        <TextView
+                            android:id="@+id/tv_ad_food_item_view_details_price"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="7"
+                            android:textColor="@color/myColor8" />
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:text="Description"
+                            android:textColor="@color/myColor8" />
+
+                        <TextView
+                            android:id="@+id/tv_ad_food_item_view_details_des"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:lines="8"
+                            android:layout_weight="7"
+                            android:textColor="@color/myColor8"/>
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_ad_food_item_view_details_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="Update"
+                android:theme="@style/AppTheme.MyButton1" />
+
+            <Button
+                android:id="@+id/btn_ad_food_item_view_details_exit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="Back"
+                android:theme="@style/AppTheme.MyButton3" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

@@ -88,7 +88,7 @@
             android:id="@+id/tv_admin_login_to_login_student"
             style="@style/parent"
             android:layout_marginTop="@dimen/loginViewsMargin"
-            android:text="Are you a student? Login here"
+            android:text="Are you a customer? Login here"
             android:textAlignment="center"
             android:textColor="@color/primaryTextColor"
             android:textSize="16sp"

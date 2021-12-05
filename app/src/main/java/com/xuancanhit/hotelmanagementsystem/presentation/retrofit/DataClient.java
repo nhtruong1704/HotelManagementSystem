@@ -2,6 +2,7 @@ package com.xuancanhit.hotelmanagementsystem.presentation.retrofit;
 
 import com.xuancanhit.hotelmanagementsystem.presentation.model.Admin;
 import com.xuancanhit.hotelmanagementsystem.presentation.model.Customer;
+import com.xuancanhit.hotelmanagementsystem.presentation.model.FoodItem;
 import com.xuancanhit.hotelmanagementsystem.presentation.model.Room;
 
 import java.util.List;
@@ -160,6 +161,24 @@ public interface DataClient {
                                      @Field("RoomDes") String RoomDes,
                                      @Field("RoomImage") String RoomImage,
                                      @Field("RoomCurrentImage") String RoomCurrentImage);
+
+
+    //View All
+    @POST("admin/food/viewAllFood.php")
+    Call<List<FoodItem>> AdminViewAllFoodItemData();
+
+    @FormUrlEncoded
+    @POST("admin/food/addFood.php")
+    Call<String> AdminAddFoodItemData(
+            @Field("FoodItemName") String FoodItemName,
+            @Field("FoodItemPrice") String FoodItemPrice,
+            @Field("FoodItemDes") String FoodItemDes,
+            @Field("FoodItemImage") String FoodItemImage);
+
+    @Multipart
+    @POST("admin/food/uploadImage.php")
+    Call<String> UploadFoodItemPhoto(@Part MultipartBody.Part photo);
+
 
 
 //

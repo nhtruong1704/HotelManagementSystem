@@ -26,7 +26,7 @@
             tools:ignore="MissingConstraints" />
 
         <TextView
-            android:id="@+id/tv_stu_name"
+            android:id="@+id/tv_cus_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -35,13 +35,13 @@
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 <!--        <TextView-->
-<!--            android:id="@+id/tv_stu_home_class"-->
+<!--            android:id="@+id/tv_cus_home_class"-->
 <!--            android:layout_width="0dp"-->
 <!--            android:layout_height="wrap_content"-->
 <!--            android:layout_marginStart="16dp"-->
 <!--            app:layout_constraintEnd_toStartOf="@+id/iv_cus_avt"-->
 <!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/tv_stu_name" />-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/tv_cus_name" />-->
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_cus_avt"
@@ -74,7 +74,7 @@
                 app:cardElevation="5dp">
 
                 <Button
-                    android:id="@+id/btn_stu_view_profile"
+                    android:id="@+id/btn_cus_view_profile"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="?attr/selectableItemBackground"
@@ -83,7 +83,7 @@
                     android:drawableTint="#fff"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:text="Customer\nProfile"
+                    android:text="My\nProfile"
                     android:textColor="#fff"
                     android:textSize="17sp"
                     android:textStyle="bold" />
@@ -99,7 +99,7 @@
                 app:cardElevation="5dp">
 
                 <Button
-                    android:id="@+id/btn_stu_change_password"
+                    android:id="@+id/btn_cus_change_password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="?attr/selectableItemBackground"
@@ -136,7 +136,7 @@
                 app:cardElevation="5dp">
 
                 <Button
-                    android:id="@+id/btn_stu_update_profile"
+                    android:id="@+id/btn_cus_update_profile"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="?attr/selectableItemBackground"
@@ -145,7 +145,7 @@
                     android:drawableTint="#fff"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:text="Update\nProfile"
+                    android:text="My Bills"
                     android:textColor="#fff"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -161,7 +161,7 @@
                 app:cardElevation="5dp">
 
                 <Button
-                    android:id="@+id/btn_stu_menu_notice"
+                    android:id="@+id/btn_cus_menu_notice"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="?attr/selectableItemBackground"
@@ -170,7 +170,7 @@
                     android:drawableTint="#fff"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:text="Notice"
+                    android:text="Booking Room"
                     android:textColor="#fff"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -197,7 +197,7 @@
                 app:cardElevation="5dp">
 
                 <Button
-                    android:id="@+id/btn_stu_menu_report"
+                    android:id="@+id/btn_cus_menu_report"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="?attr/selectableItemBackground"
@@ -206,7 +206,7 @@
                     android:drawableTint="#fff"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:text="Report"
+                    android:text="Order Food"
                     android:textColor="#fff"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -222,7 +222,7 @@
                 app:cardElevation="5dp">
 
                 <Button
-                    android:id="@+id/btn_stu_logout"
+                    android:id="@+id/btn_cus_logout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="?attr/selectableItemBackground"
