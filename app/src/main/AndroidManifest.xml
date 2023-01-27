@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ui.activities.customer.CustomerFoodItemViewAllActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.customer.CustomerRoomViewAllActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.customer.CustomerViewProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.fooditem.AdminFoodItemUpdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.fooditem.AdminFoodItemViewDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.fooditem.AdminFoodItemAddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.fooditem.AdminFoodItemViewAllActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.room.AdminRoomUpdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.room.AdminRoomViewDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.room.AdminRoomAddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.room.AdminRoomViewAllActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.customer.AdminCustomerViewProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.customer.AdminCustomerUpdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.customer.AdminCustomerAddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.AdminForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.AdminChangePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.customer.AdminCustomerViewAllActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.AdminUpdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.AdminMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.admin.AdminLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.customer.CustomerMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.customer.CustomerLoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

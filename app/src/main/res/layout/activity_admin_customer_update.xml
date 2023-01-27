@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sv_ad_stu_add"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context=".ui.activities.admin.customer.AdminCustomerUpdateActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#fff">
+
+            <ImageView
+                android:id="@+id/iv_ad_cus_update_exit"
+                android:layout_width="65dp"
+                android:layout_height="75dp"
+                android:padding="7dp"
+                android:src="@drawable/ic_baseline_arrow_back_ios_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Update Customer"
+                android:textColor="?attr/colorControlNormal"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_ad_stu_update_avt"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="35dp"
+                android:src="@drawable/review" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_ad_cus_update_take_photo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_baseline_photo_camera_24"
+                    android:text="   Take Photo   "
+                    android:theme="@style/AppTheme.MyButton2" />
+
+                <Button
+                    android:id="@+id/btn_ad_cus_update_choose_photo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_baseline_insert_photo_24"
+                    android:text="Choose Photo"
+                    android:theme="@style/AppTheme.MyButton6" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_ad_cus_update_name"
+                style="@style/modifiedEditText"
+                android:drawableStart="@drawable/ic_baseline_person_pin_24"
+                android:drawableTint="?attr/colorControlNormal"
+                android:hint="Customer Name"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_ad_cus_update_phone"
+                style="@style/modifiedEditText"
+                android:drawableStart="@drawable/ic_baseline_phone_iphone_24"
+                android:drawableTint="?attr/colorControlNormal"
+                android:hint="Phone Number"
+                android:inputType="phone"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_ad_cus_update_address"
+                style="@style/modifiedEditText"
+                android:drawableStart="@drawable/ic_baseline_location_city_24"
+                android:drawableTint="?attr/colorControlNormal"
+                android:hint="Address"
+                android:maxLines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/parent"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/loginViewsMargin">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_ad_cus_update_dob"
+                    style="@style/modifiedEditText"
+                    android:clickable="false"
+
+                    android:cursorVisible="false"
+                    android:drawableStart="@drawable/ic_baseline_date_range_24"
+                    android:drawableTint="?attr/colorControlNormal"
+                    android:focusable="false"
+
+                    android:focusableInTouchMode="false"
+                    android:hint="Date of birth"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageButton
+                android:id="@+id/im_btn_ad_cus_update_del_dob"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="3dp"
+                android:background="@null"
+                android:src="@drawable/ic_baseline_view_stream_24"
+                android:textAlignment="center" />
+
+        </RelativeLayout>
+
+
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_ad_cus_update_email"
+                style="@style/modifiedEditText"
+                android:drawableStart="@drawable/round_mail_outline_24"
+                android:drawableTint="?attr/colorControlNormal"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_ad_cus_update_password"
+                style="@style/modifiedEditText"
+                android:drawableStart="@drawable/round_lock_24"
+                android:drawableTint="?attr/colorControlNormal"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:layout_marginStart="4dp"
+            android:orientation="horizontal"
+            android:paddingTop="23dp"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="3"
+                android:drawableStart="@drawable/ic_baseline_person_24"
+                android:drawableTint="?attr/colorControlNormal"
+                android:text="Gender" />
+
+            <RadioGroup
+                android:id="@+id/rg_ad_cus_update_gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="7"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_ad_cus_update_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:checked="true"
+                    android:text="Male" />
+
+                <RadioButton
+                    android:id="@+id/rb_ad_cus_update_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:text="Female" />
+
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:layout_marginStart="4dp"
+            android:orientation="horizontal"
+            android:paddingTop="13dp"
+            android:paddingBottom="10dp"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="3"
+                android:drawableStart="@drawable/ic_baseline_verified_user_24"
+                android:drawableTint="?attr/colorControlNormal"
+                android:text="V.I.P" />
+
+            <RadioGroup
+                android:id="@+id/rg_ad_cus_update_vip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="7"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_ad_cus_update_inactive_vip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:checked="true"
+                    android:text="InActive" />
+
+                <RadioButton
+                    android:id="@+id/rb_ad_cus_update_active_vip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:text="Active" />
+
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_ad_stu_update_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="Save"
+                android:theme="@style/AppTheme.MyButton1" />
+
+            <Button
+                android:id="@+id/btn_ad_stu_update_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="Delete"
+                android:theme="@style/AppTheme.MyButton7" />
+
+            <Button
+                android:id="@+id/btn_ad_stu_update_exit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="back"
+                android:theme="@style/AppTheme.MyButton3" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+
