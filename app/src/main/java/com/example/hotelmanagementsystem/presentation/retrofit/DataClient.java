@@ -107,9 +107,9 @@ public interface DataClient {
                                       @Field("CustomerEmail") String CustomerEmail,
                                       @Field("CustomerIsVip") String CustomerIsVip,
                                       @Field("CustomerPassword") String CustomerPassword,
-                                      @Field("CustomerAvatar") String CustomerAvatar,
                                       @Field("CustomerDOB") String CustomerDOB,
-                                      @Field("CustomerGender") String CustomerGender);
+                                      @Field("CustomerGender") String CustomerGender,
+                                      @Field("CustomerAvatar") String CustomerAvatar);
 
     //View All Customer
     @POST("admin/viewAllCus.php")
