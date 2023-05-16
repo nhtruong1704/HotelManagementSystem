@@ -26,7 +26,7 @@
         style="@style/AudioFileInfoOverlayText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="© Xuan Canh IKBO-07-19"
+        android:text="© IKHO-01-20"
         android:textColor="@color/white"
         android:textSize="13dp" />
 

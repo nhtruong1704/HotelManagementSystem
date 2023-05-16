@@ -36,18 +36,18 @@ public interface DataClient {
     Call<List<Customer>> LoginCustomerData(@Field("CustomerEmail") String CustomerEmail,
                                            @Field("CustomerPassword") String CustomerPassword);
 
-//    @FormUrlEncoded
-//    @POST("update.php")
-//    Call<String> UpdateCustomerData(@Field("CustomerId") String CustomerId,
-//                                   @Field("CustomerNo") String CustomerNo,
-//                                   @Field("CustomerName") String CustomerName,
-//                                   @Field("CustomerDOB") String CustomerDOB,
-//                                   @Field("CustomerClass") String CustomerClass,
-//                                   @Field("CustomerPhone") String CustomerPhone,
-//                                   @Field("CustomerEmail") String CustomerEmail,
-//                                   @Field("CustomerAvatar") String CustomerAvatar,
-//                                   @Field("CustomerGender") String CustomerGender,
-//                                   @Field("CustomerCurrentAvatar") String CustomerCurrentAvatar);
+    @FormUrlEncoded
+    @POST("update.php")
+    Call<String> UpdateCustomerData(@Field("CustomerId") String CustomerId,
+                                   @Field("CustomerName") String CustomerName,
+                                    @Field("CustomerPhone") String CustomerPhone,
+                                   @Field("CustomerDOB") String CustomerDOB,
+                                   @Field("CustomerAddress") String CustomerAddress,
+
+                                   @Field("CustomerEmail") String CustomerEmail,
+                                   @Field("CustomerAvatar") String CustomerAvatar,
+                                   @Field("CustomerGender") String CustomerGender,
+                                   @Field("CustomerCurrentAvatar") String CustomerCurrentAvatar);
 
     @GET("delete.php")
     Call<String> DeleteCustomerData(@Query("CustomerId") String CustomerId, @Query("CustomerAvatar") String CustomerAvatar);

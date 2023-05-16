@@ -100,9 +100,9 @@ public class AdminUpdateActivity extends AppCompatActivity {
         btnAdminChangePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(AdminUpdateActivity.this, AdminChangePasswordActivity.class);
-//                intent.putExtra("ADMIN_DATA_FROM_UPDATE_TO_CHANGE_PASSWORD", adminArr);
-//                startActivityForResult(intent, ADMIN_CHANGE_PASSWORD_ACTIVITY);
+                Intent intent = new Intent(AdminUpdateActivity.this, AdminChangePasswordActivity.class);
+              intent.putExtra("ADMIN_DATA_FROM_UPDATE_TO_CHANGE_PASSWORD", adminArr);
+              startActivityForResult(intent, ADMIN_CHANGE_PASSWORD_ACTIVITY);
             }
         });
 

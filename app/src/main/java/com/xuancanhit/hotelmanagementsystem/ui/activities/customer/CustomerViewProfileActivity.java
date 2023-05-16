@@ -17,7 +17,8 @@ import com.xuancanhit.hotelmanagementsystem.presentation.model.Customer;
 
 import java.util.ArrayList;
 
-public class CustomerViewProfileActivity extends AppCompatActivity {
+public class
+CustomerViewProfileActivity extends AppCompatActivity {
 
     public static final int CUSTOMER_UPDATE = 1;
     public static final int RESULT_UPDATE_OK = 2;

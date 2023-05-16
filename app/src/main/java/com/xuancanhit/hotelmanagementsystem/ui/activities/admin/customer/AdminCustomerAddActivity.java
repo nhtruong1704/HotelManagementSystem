@@ -58,7 +58,7 @@ public class AdminCustomerAddActivity extends AppCompatActivity {
     Uri imageUri;
     String customerName, customerPhone, customerAddress, customerEmail, customerPassword, customerAvatar, customerDOB;
 
-    private EditText edtAdCusAddName, edtAdCusAddEmail, edtAdCusAddPassword, edtAdCusAddAddress, edtAdCusAddDOB, edtAdCusAddClass, edtAdCusAddPhone;
+    private EditText edtAdCusAddName, edtAdCusAddEmail, edtAdCusAddPassword, edtAdCusAddAddress, edtAdCusAddDOB, edtAdCusAddPhone;
     private Button btnAdCusAddSave, btnAdCusAddExit, btnAdCusAddTakePhoto, btnAdCusAddChoosePhoto;
     private ImageButton imBtnAdCusAddDelDOB;
     private ImageView ivAdCusAddAvt, ivAdCusAddExit;

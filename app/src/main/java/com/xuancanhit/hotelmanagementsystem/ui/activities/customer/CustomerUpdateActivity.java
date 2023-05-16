@@ -1,7 +1,5 @@
 package com.xuancanhit.hotelmanagementsystem.ui.activities.customer;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,14 +24,9 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 import com.xuancanhit.hotelmanagementsystem.R;
-import com.xuancanhit.hotelmanagementsystem.presentation.model.Admin;
 import com.xuancanhit.hotelmanagementsystem.presentation.model.Customer;
 import com.xuancanhit.hotelmanagementsystem.presentation.retrofit.APIUtils;
 import com.xuancanhit.hotelmanagementsystem.presentation.retrofit.DataClient;
-import com.xuancanhit.hotelmanagementsystem.ui.activities.admin.AdminChangePasswordActivity;
-import com.xuancanhit.hotelmanagementsystem.ui.activities.admin.AdminLoginActivity;
-import com.xuancanhit.hotelmanagementsystem.ui.activities.admin.AdminMenuActivity;
-import com.xuancanhit.hotelmanagementsystem.ui.activities.admin.AdminUpdateActivity;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -51,7 +44,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivitytest extends AppCompatActivity {
+public class CustomerUpdateActivity extends AppCompatActivity {
 
     public static final int CUSTOMER_CHANGE_PASSWORD_ACTIVITY = 2;
     public static final int RESULT_CHANGE_PASSWORD_OK = 3;
@@ -66,7 +59,7 @@ public class MainActivitytest extends AppCompatActivity {
     ImageView ivCustomerUpdateAvatar, ivCustomerUpdateExit;
 
     ArrayList<Customer> customerArr;
-    String customerEmail, customerName, customerAvatar, customerPhone;
+    String customerEmail, customerName, customerAvatar, customerPhone, customerAddress,customerDOB,customerGender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -275,16 +268,19 @@ public class MainActivitytest extends AppCompatActivity {
 
 
         DataClient insertData = APIUtils.getData();
-        Call<String> callbackInfo = insertData.UpdateCustomerData(customerArr.get(0).getCusId(), customerEmail, customerName, customerPhone, newAvatar, currentAvatar);
+        Call<String> callbackInfo = insertData.UpdateCustomerData(customerArr.get(0).getCusId(), customerEmail, customerName, customerPhone,customerDOB, customerAddress,customerGender, newAvatar, currentAvatar);
         customerArr.get(0).setCusEmail(customerEmail);
         customerArr.get(0).setCusName(customerName);
         customerArr.get(0).setCusPhone(customerPhone);
+        customerArr.get(0).setCusDOB(customerDOB);
+        customerArr.get(0).setCusAddress(customerAddress);
+        customerArr.get(0).setCusGender(customerGender);
         customerArr.get(0).setCusAvatar(newAvatar);
         callbackInfo.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 String result = response.body();
-                Log.d("Updated Ad Info", result);
+                Log.d("Updated cus Info", result);
                 if (result.trim().equals("CUSTOMER_UPDATE_SUCCESSFUL")) {
                     Toast.makeText(CustomerUpdateActivity.this, "Successfully Updated Customer Information", Toast.LENGTH_SHORT).show();
                     backToMenu();
@@ -377,17 +373,16 @@ public class MainActivitytest extends AppCompatActivity {
     }
 
     private void initUI() {
-        edtCustomerUpdateEmail = findViewById(R.id.edt_customer_update_email);
-        edtCustomerUpdateName = findViewById(R.id.edt_customer_update_name);
-        edtCustomerUpdatePhone = findViewById(R.id.edt_customer_update_phone);
-        btnCustomerUpdateChoosePhoto = findViewById(R.id.btn_customer_update_choose_photo);
-        btnCustomerUpdateTakePhoto = findViewById(R.id.btn_customer_update_take_photo);
-        btnCustomerUpdateSave = findViewById(R.id.btn_customer_update_save);
-        btnCustomerUpdateDelete = findViewById(R.id.btn_customer_update_delete);
-        btnCustomerUpdateExit = findViewById(R.id.btn_customer_update_exit);
-        btnCustomerChangePassword = findViewById(R.id.btn_customer_update_change_password);
-        ivCustomerUpdateAvatar = findViewById(R.id.iv_customer_update_avt);
-        ivCustomerUpdateExit = findViewById(R.id.iv_customer_update_exit);
+        edtCustomerUpdateEmail = findViewById(R.id.edt_cus_update_email);
+        edtCustomerUpdateName = findViewById(R.id.edt_cus_update_name);
+        edtCustomerUpdatePhone = findViewById(R.id.edt_cus_update_phone);
+        btnCustomerUpdateChoosePhoto = findViewById(R.id.btn_cus_update_choose_photo);
+        btnCustomerUpdateTakePhoto = findViewById(R.id.btn_cus_update_take_photo);
+        btnCustomerUpdateSave = findViewById(R.id.btn_cus_update_save);
+        btnCustomerUpdateDelete = findViewById(R.id.btn_cus_update_delete);
+        btnCustomerUpdateExit = findViewById(R.id.btn_cus_update_exit);
+        ivCustomerUpdateAvatar = findViewById(R.id.iv_cus_update_avt);
+        ivCustomerUpdateExit = findViewById(R.id.iv_cus_update_exit);
     }
 
     // Get Real Path when upload photo(from uri - image/mame_image)
