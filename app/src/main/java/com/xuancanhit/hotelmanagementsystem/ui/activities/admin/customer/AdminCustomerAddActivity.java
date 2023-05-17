@@ -168,13 +168,13 @@ public class AdminCustomerAddActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (isEmptyEditText(edtAdCusAddName)) {
-                    edtAdCusAddName.setError("Please enter student's name");
+                    edtAdCusAddName.setError("Please enter customer's name");
                 }
                 if (isEmptyEditText(edtAdCusAddPassword)) {
-                    edtAdCusAddPassword.setError("Please enter student's password");
+                    edtAdCusAddPassword.setError("Please enter customer's password");
                 }
                 if (isEmptyEditText(edtAdCusAddEmail)) {
-                    edtAdCusAddEmail.setError("Please enter student's email");
+                    edtAdCusAddEmail.setError("Please enter customer's email");
                 }
 
                 if (isEmailValid(edtAdCusAddEmail)) {
@@ -222,14 +222,14 @@ public class AdminCustomerAddActivity extends AppCompatActivity {
         if (!realPath.equals("")) {
             callback = insertData.AdminAddCustomerData(customerName, customerPhone, customerAddress, customerEmail, isVip, customerPassword, APIUtils.BASE_URL + "images/" + customerAvatar, customerDOB, updateGender);
         } else {
-            callback = insertData.AdminAddCustomerData(customerName, customerPhone, customerAddress, customerEmail, isVip, customerPassword, "NO_IMAGE_ADD_STUDENT", customerDOB, updateGender);
+            callback = insertData.AdminAddCustomerData(customerName, customerPhone, customerAddress, customerEmail, isVip, customerPassword, "NO_IMAGE_ADD_CUSTOMER", customerDOB, updateGender);
         }
         callback.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 String result = response.body();
-                Log.d("Ad Stu Add Info", result);
-                if (result.trim().equals("ADD_STUDENT_SUCCESSFUL")) {
+                Log.d("Ad Cus Add Info", result);
+                if (result.trim().equals("ADD_CUSTOMER_SUCCESSFUL")) {
                     Toast.makeText(AdminCustomerAddActivity.this, "Customer " + customerName + " Added Successful", Toast.LENGTH_SHORT).show();
                     finish();
                 }
@@ -237,7 +237,7 @@ public class AdminCustomerAddActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Log.d("Error Ad Stu Add Info", t.getMessage());
+                Log.d("Error Ad Cus Add Info", t.getMessage());
             }
         });
     }
@@ -263,7 +263,7 @@ public class AdminCustomerAddActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Log.d("Error Updated Stu Photo", t.getMessage());
+                Log.d("Error Updated Cus Photo", t.getMessage());
             }
         });
     }
