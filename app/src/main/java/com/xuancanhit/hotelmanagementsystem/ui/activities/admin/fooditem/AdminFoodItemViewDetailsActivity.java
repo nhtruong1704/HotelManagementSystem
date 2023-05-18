@@ -23,7 +23,7 @@ public class AdminFoodItemViewDetailsActivity extends AppCompatActivity {
     private TextView tvAdFoodItemViewDetailsName, tvAdFoodItemViewDetailsPrice, tvAdFoodItemViewDetailsDes;
     private Button btnAdFoodItemViewDetailsUpdate, btnAdFoodItemViewDetailsExit;
 
-    ArrayList<FoodItem>foodItemArr;
+    ArrayList<FoodItem> foodItemArr;
     int position;
 
     @Override
@@ -62,7 +62,7 @@ public class AdminFoodItemViewDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(AdminFoodItemViewDetailsActivity.this, AdminFoodItemUpdateActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putParcelableArrayList("FOOD_ITEM_DATA_ARRAY",foodItemArr);
+                bundle.putParcelableArrayList("FOOD_ITEM_DATA_ARRAY", foodItemArr);
                 bundle.putInt("FOOD_ITEM_DATA_POSITION", position);
                 intent.putExtra("FOOD_ITEM_DATA_FROM_AD_FOOD_ITEM_VIEW_DETAILS_TO_UPDATE", bundle);
                 startActivity(intent);
@@ -73,21 +73,28 @@ public class AdminFoodItemViewDetailsActivity extends AppCompatActivity {
     }
 
     @SuppressLint("SetTextI18n")
-    private void initView() {
-        tvAdFoodItemViewDetailsName.setText(foodItemArr.get(position).getFoodItemName());
-        tvAdFoodItemViewDetailsPrice.setText(foodItemArr.get(position).getFoodItemPrice());
-        tvAdFoodItemViewDetailsDes.setText(foodItemArr.get(position).getFoodItemDes());
 
-        if (!foodItemArr.get(position).getFoodItemImage().equals("")) {
-            Picasso.get()
-                    .load(foodItemArr.get(position).getFoodItemImage())
-                    .placeholder(R.drawable.diet)
-                    .error(R.drawable.diet)
-                    .into(ivAdFoodItemViewDetailsImage);
-        } else {
-            ivAdFoodItemViewDetailsImage.setImageResource(R.drawable.diet);
+    private void initView() {
+        if (foodItemArr != null && position < foodItemArr.size()) {
+            tvAdFoodItemViewDetailsName.setText(foodItemArr.get(position).getFoodItemName());
+            tvAdFoodItemViewDetailsPrice.setText(foodItemArr.get(position).getFoodItemPrice());
+            tvAdFoodItemViewDetailsDes.setText(foodItemArr.get(position).getFoodItemDes());
+
+            if (!foodItemArr.get(position).getFoodItemImage().equals("")) {
+                Picasso.get()
+                        .load(foodItemArr.get(position).getFoodItemImage())
+                        .placeholder(R.drawable.diet)
+                        .error(R.drawable.diet)
+                        .into(ivAdFoodItemViewDetailsImage);
+            } else {
+                ivAdFoodItemViewDetailsImage.setImageResource(R.drawable.diet);
+            }
         }
     }
+
+
+
+
 
     private void receiveDataFromFoodItemAdapter() {
         Intent intent = getIntent();

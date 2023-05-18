@@ -71,40 +71,40 @@ public class AdminCustomerViewProfileActivity extends AppCompatActivity {
     }
     @SuppressLint("SetTextI18n")
     private void initView() {
-        tvAdCusViewProfileName.setText(customerArr.get(position).getCusName());
-        tvAdCusViewProfileAddress.setText(customerArr.get(position).getCusAddress());
-        tvAdCusViewProfileDOB.setText(customerArr.get(position).getCusDOB());
-        tvAdCusViewProfilePhone.setText(customerArr.get(position).getCusPhone());
-        tvAdCusViewProfileEmail.setText(customerArr.get(position).getCusEmail());
-        if (customerArr.get(position).getCusGender().equals("1")) {
-            tvAdCusViewProfileGender.setText("Male");
-        } else if (customerArr.get(position).getCusGender().equals("0")) {
-            tvAdCusViewProfileGender.setText("Female");
-        }
-
-        if (customerArr.get(position).getCusIsVip().equals("1")) {
-            ivAdCusViewProfileVip.setImageResource(R.drawable.vip_card);
-        }
-        else
-            ivAdCusViewProfileVip.setImageResource(R.drawable.transparent);
-
-        if (!customerArr.get(position).getCusAvatar().equals("")) {
-            Picasso.get()
-                    .load(customerArr.get(position).getCusAvatar())
-                    .placeholder(R.drawable.admin)
-                    .error(R.drawable.admin)
-                    .into(ivAdCusViewProfileAvatar);
-        } else {
-            if (!customerArr.get(position).getCusGender().equals("-1")) {
-                if (customerArr.get(position).getCusGender().equals("1")) {
-                    ivAdCusViewProfileAvatar.setImageResource(R.drawable.male);
-                }
-                if (customerArr.get(position).getCusGender().equals("0")) {
-                    ivAdCusViewProfileAvatar.setImageResource(R.drawable.female);
-                }
+        if (customerArr != null && position < customerArr.size()) {
+            tvAdCusViewProfileName.setText(customerArr.get(position).getCusName());
+            tvAdCusViewProfileAddress.setText(customerArr.get(position).getCusAddress());
+            tvAdCusViewProfileDOB.setText(customerArr.get(position).getCusDOB());
+            tvAdCusViewProfilePhone.setText(customerArr.get(position).getCusPhone());
+            tvAdCusViewProfileEmail.setText(customerArr.get(position).getCusEmail());
+            if (customerArr.get(position).getCusGender().equals("1")) {
+                tvAdCusViewProfileGender.setText("Male");
+            } else if (customerArr.get(position).getCusGender().equals("0")) {
+                tvAdCusViewProfileGender.setText("Female");
             }
-            else {
-                ivAdCusViewProfileAvatar.setImageResource(R.drawable.review);
+
+            if (customerArr.get(position).getCusIsVip().equals("1")) {
+                ivAdCusViewProfileVip.setImageResource(R.drawable.vip_card);
+            } else
+                ivAdCusViewProfileVip.setImageResource(R.drawable.transparent);
+
+            if (!customerArr.get(position).getCusAvatar().equals("")) {
+                Picasso.get()
+                        .load(customerArr.get(position).getCusAvatar())
+                        .placeholder(R.drawable.admin)
+                        .error(R.drawable.admin)
+                        .into(ivAdCusViewProfileAvatar);
+            } else {
+                if (!customerArr.get(position).getCusGender().equals("-1")) {
+                    if (customerArr.get(position).getCusGender().equals("1")) {
+                        ivAdCusViewProfileAvatar.setImageResource(R.drawable.male);
+                    }
+                    if (customerArr.get(position).getCusGender().equals("0")) {
+                        ivAdCusViewProfileAvatar.setImageResource(R.drawable.female);
+                    }
+                } else {
+                    ivAdCusViewProfileAvatar.setImageResource(R.drawable.review);
+                }
             }
         }
     }

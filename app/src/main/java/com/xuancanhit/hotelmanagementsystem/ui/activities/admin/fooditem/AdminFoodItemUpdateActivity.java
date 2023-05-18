@@ -180,7 +180,7 @@ public class AdminFoodItemUpdateActivity extends AppCompatActivity {
             currentImage = foodItemArr.get(position).getFoodItemImage();
             currentImage = currentImage.substring(currentImage.lastIndexOf("/"));
         } else {
-            currentImage = "NO_IMAGE_FOOD_ITEM_UPDATE";
+            currentImage = "NO_CURRENT_IMAGE_FOOD_ITEM_UPDATE";
         }
         DataClient dataClient = APIUtils.getData();
         retrofit2.Call<String> callback = dataClient.DeleteFoodItemData(foodItemArr.get(position).getFoodItemId(), currentImage);
