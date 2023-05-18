@@ -141,14 +141,14 @@ public class AdminFoodItemAddActivity extends AppCompatActivity {
         if (!realPath.equals("")) {
             callback = insertData.AdminAddFoodItemData(foodItemName, foodItemPrice, foodItemDes, APIUtils.BASE_URL + "admin/food/images/" + foodItemImage);
         } else {
-            callback = insertData.AdminAddFoodItemData(foodItemName, foodItemPrice, foodItemDes, "NO_IMAGE_ADD_FOOD_ITEM");
+            callback = insertData.AdminAddFoodItemData(foodItemName, foodItemPrice, foodItemDes, "NO_IMAGE_ADD_FOOD");
         }
         callback.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 String result = response.body();
                 Log.d("Ad FoodItem Add Info", result);
-                if (result.trim().equals("ADD_FOOD_ITEM_SUCCESSFUL")) {
+                if (result.trim().equals("ADD_FOOD_SUCCESSFUL")) {
                     Toast.makeText(AdminFoodItemAddActivity.this, "FoodItem " + foodItemName + " Added Successful", Toast.LENGTH_SHORT).show();
                     finish();
                 }

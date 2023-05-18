@@ -61,7 +61,7 @@ public class AdminCustomerUpdateActivity extends AppCompatActivity {
     Uri imageUri;
     String customerName, customerPhone, customerAddress, customerEmail, customerPassword, customerDOB, customerAvatar;
 
-    private EditText edtAdCusUpdateName, edtAdCusUpdateEmail, edtAdCusUpdatePassword, edtAdCusUpdateNo, edtAdCusUpdateDOB, edtAdCusUpdateAddress, edtAdCusUpdatePhone;
+    private EditText edtAdCusUpdateName, edtAdCusUpdateEmail, edtAdCusUpdatePassword, edtAdCusUpdateDOB, edtAdCusUpdateAddress, edtAdCusUpdatePhone;
     private Button btnAdCusUpdateSave, btnAdCusUpdateDelete, btnAdCusUpdateExit, btnAdCusUpdateTakePhoto, btnAdCusUpdateChoosePhoto;
     private ImageButton imBtnAdCusUpdateDelDOB;
     private ImageView ivAdCusUpdateAvt, ivAdCusUpdateExit;
@@ -181,12 +181,12 @@ public class AdminCustomerUpdateActivity extends AppCompatActivity {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(AdminCustomerUpdateActivity.this);
                 builder.setIcon(R.drawable.ic_baseline_delete_24);
-                builder.setTitle("Delete this student account");
+                builder.setTitle("Delete this customer account");
                 builder.setMessage("Are you sure want to delete account customer " + customerArr.get(position).getCusName() + "?");
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        deleteAccStudent();
+                        deleteAccCustomer();
                     }
                 });
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -205,13 +205,13 @@ public class AdminCustomerUpdateActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (isEmptyEditText(edtAdCusUpdateName)) {
-                    edtAdCusUpdateName.setError("Please enter student's name");
+                    edtAdCusUpdateName.setError("Please enter customer's name");
                 }
                 if (isEmptyEditText(edtAdCusUpdatePassword)) {
-                    edtAdCusUpdatePassword.setError("Please enter student's password");
+                    edtAdCusUpdatePassword.setError("Please enter customer's password");
                 }
                 if (isEmptyEditText(edtAdCusUpdateEmail)) {
-                    edtAdCusUpdateEmail.setError("Please enter student's email");
+                    edtAdCusUpdateEmail.setError("Please enter customer's email");
                 }
 
                 if (isEmailValid(edtAdCusUpdateEmail)) {
@@ -253,13 +253,13 @@ public class AdminCustomerUpdateActivity extends AppCompatActivity {
         return false;
     }
 
-    private void deleteAccStudent() {
+    private void deleteAccCustomer() {
         String currentAvatar;
         if (!customerArr.get(position).getCusAvatar().equals("")) {
             currentAvatar = customerArr.get(position).getCusAvatar();
             currentAvatar = currentAvatar.substring(currentAvatar.lastIndexOf("/"));
         } else {
-            currentAvatar = "NO_IMAGE_STUDENT_UPDATE";
+            currentAvatar = "NO_CURRENT_IMAGE_CUSTOMER_UPDATE";
         }
         DataClient dataClient = APIUtils.getData();
         retrofit2.Call<String> callback = dataClient.DeleteCustomerData(customerArr.get(position).getCusId(), currentAvatar);
@@ -267,7 +267,7 @@ public class AdminCustomerUpdateActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 String res = response.body();
-                if (res.trim().equals("STUDENT_ACC_DELETED_SUCCESSFUL")) {
+                if (res.trim().equals("CUSTOMER_ACC_DELETED_SUCCESSFUL")) {
                     Toast.makeText(AdminCustomerUpdateActivity.this, "Deleted Customer " + customerArr.get(position).getCusName() + " Successfully", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(AdminCustomerUpdateActivity.this, AdminCustomerViewAllActivity.class);
                     startActivity(intent);
@@ -287,10 +287,10 @@ public class AdminCustomerUpdateActivity extends AppCompatActivity {
 
     private void receiveDataFromAdCusViewProfile() {
         Intent intent = getIntent();
-        Bundle bundle = intent.getBundleExtra("STUDENT_DATA_FROM_AD_STU_VIEW_PROFILE_TO_UPDATE");
+        Bundle bundle = intent.getBundleExtra("CUSTOMER_DATA_FROM_AD_CUS_VIEW_PROFILE_TO_UPDATE");
         if (bundle != null) {
-            customerArr = bundle.getParcelableArrayList("STUDENT_DATA_ARRAY");
-            position = bundle.getInt("STUDENT_DATA_POSITION");
+            customerArr = bundle.getParcelableArrayList("CUSTOMER_DATA_ARRAY");
+            position = bundle.getInt("CUSTOMER_DATA_POSITION");
         }
     }
 
@@ -308,7 +308,7 @@ public class AdminCustomerUpdateActivity extends AppCompatActivity {
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response != null) {
                     customerAvatar = response.body();
-                    Log.d("Updated Stuc Photo", customerAvatar);
+                    Log.d("Updated Customer Photo", customerAvatar);
                     uploadInfo();
                     backToMenu();
                 }
@@ -316,7 +316,7 @@ public class AdminCustomerUpdateActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Log.d("Error Updated Stu Photo", t.getMessage());
+                Log.d("Error Updated Cus Photo", t.getMessage());
             }
         });
     }
@@ -325,7 +325,7 @@ public class AdminCustomerUpdateActivity extends AppCompatActivity {
         String currentAvatar, newAvatar;
         if (customerArr.get(position).getCusAvatar().equals("")) {
             //curAva = "", newAva=""
-            currentAvatar = "NO_CURRENT_IMAGE_STUDENT_UPDATE";
+            currentAvatar = "NO_CURRENT_IMAGE_CUSTOMER_UPDATE";
             if (realPath.equals("")) {
                 newAvatar = "";
             } else {
@@ -333,7 +333,7 @@ public class AdminCustomerUpdateActivity extends AppCompatActivity {
             }
         } else {
             if (realPath.equals("")) {
-                currentAvatar = "NO_CURRENT_IMAGE_STUDENT_UPDATE";
+                currentAvatar = "NO_CURRENT_IMAGE_CUSTOMER_UPDATE";
                 newAvatar = customerArr.get(position).getCusAvatar();
             } else {
                 currentAvatar = customerArr.get(position).getCusAvatar();
@@ -359,8 +359,8 @@ public class AdminCustomerUpdateActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 String result = response.body();
-                Log.d("Updated Stu Info", result);
-                if (result.trim().equals("STUDENT_UPDATE_SUCCESSFUL")) {
+                Log.d("Updated Cus Info", result);
+                if (result.trim().equals("CUSTOMER_UPDATE_SUCCESSFUL")) {
                     Toast.makeText(AdminCustomerUpdateActivity.this, "Successfully Updated Customer Information " + customerName, Toast.LENGTH_SHORT).show();
                     backToMenu();
                 }
@@ -368,7 +368,7 @@ public class AdminCustomerUpdateActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Log.d("Error Updated Stu Info", t.getMessage());
+                Log.d("Error Updated Cus Info", t.getMessage());
             }
         });
     }
@@ -377,10 +377,10 @@ public class AdminCustomerUpdateActivity extends AppCompatActivity {
     private void backToMenu() {
         Intent intent = new Intent(AdminCustomerUpdateActivity.this, AdminCustomerViewProfileActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putParcelableArrayList("STUDENT_DATA_ARRAY", customerArr);
-        bundle.putInt("STUDENT_DATA_POSITION", position);
+        bundle.putParcelableArrayList("CUSTOMER_DATA_ARRAY", customerArr);
+        bundle.putInt("CUSTOMER_DATA_POSITION", position);
         // Data resend to AdStuViewProfile STUDENT_DATA_FROM_STUDENT_ADAPTER_TO_AD_STU_VIEW_PROFILE - just receiver 1 time
-        intent.putExtra("STUDENT_DATA_FROM_STUDENT_ADAPTER_TO_AD_STU_VIEW_PROFILE", bundle);
+        intent.putExtra("CUSTOMER_DATA_FROM_CUSTOMER_ADAPTER_TO_AD_CUS_VIEW_PROFILE", bundle);
         startActivity(intent);
         finish();
     }
@@ -461,7 +461,7 @@ public class AdminCustomerUpdateActivity extends AppCompatActivity {
     }
 
     private void initUI() {
-        ivAdCusUpdateAvt = findViewById(R.id.iv_ad_stu_update_avt);
+        ivAdCusUpdateAvt = findViewById(R.id.iv_ad_cus_update_avt);
         ivAdCusUpdateExit = findViewById(R.id.iv_ad_cus_update_exit);
 
         edtAdCusUpdateName = findViewById(R.id.edt_ad_cus_update_name);
@@ -479,9 +479,9 @@ public class AdminCustomerUpdateActivity extends AppCompatActivity {
         rbAdCusUpdateActive = findViewById(R.id.rb_ad_cus_update_active_vip);
         rbAdCusUpdateInactive = findViewById(R.id.rb_ad_cus_update_inactive_vip);
 
-        btnAdCusUpdateSave = findViewById(R.id.btn_ad_stu_update_save);
-        btnAdCusUpdateDelete = findViewById(R.id.btn_ad_stu_update_delete);
-        btnAdCusUpdateExit = findViewById(R.id.btn_ad_stu_update_exit);
+        btnAdCusUpdateSave = findViewById(R.id.btn_ad_cus_update_save);
+        btnAdCusUpdateDelete = findViewById(R.id.btn_ad_cus_update_delete);
+        btnAdCusUpdateExit = findViewById(R.id.btn_ad_cus_update_exit);
         btnAdCusUpdateTakePhoto = findViewById(R.id.btn_ad_cus_update_take_photo);
         btnAdCusUpdateChoosePhoto = findViewById(R.id.btn_ad_cus_update_choose_photo);
         imBtnAdCusUpdateDelDOB = findViewById(R.id.im_btn_ad_cus_update_del_dob);

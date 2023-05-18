@@ -61,9 +61,9 @@ public class AdminCustomerViewProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(AdminCustomerViewProfileActivity.this, AdminCustomerUpdateActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putParcelableArrayList("STUDENT_DATA_ARRAY", customerArr);
-                bundle.putInt("STUDENT_DATA_POSITION", position);
-                intent.putExtra("STUDENT_DATA_FROM_AD_STU_VIEW_PROFILE_TO_UPDATE", bundle);
+                bundle.putParcelableArrayList("CUSTOMER_DATA_ARRAY", customerArr);
+                bundle.putInt("CUSTOMER_DATA_POSITION", position);
+                intent.putExtra("CUSTOMER_DATA_FROM_AD_CUS_VIEW_PROFILE_TO_UPDATE", bundle);
                 startActivity(intent);
                 finish();
             }
@@ -98,10 +98,12 @@ public class AdminCustomerViewProfileActivity extends AppCompatActivity {
             if (!customerArr.get(position).getCusGender().equals("-1")) {
                 if (customerArr.get(position).getCusGender().equals("1")) {
                     ivAdCusViewProfileAvatar.setImageResource(R.drawable.male);
-                } else {
+                }
+                if (customerArr.get(position).getCusGender().equals("0")) {
                     ivAdCusViewProfileAvatar.setImageResource(R.drawable.female);
                 }
-            } else {
+            }
+            else {
                 ivAdCusViewProfileAvatar.setImageResource(R.drawable.review);
             }
         }
@@ -109,10 +111,10 @@ public class AdminCustomerViewProfileActivity extends AppCompatActivity {
 
     private void receiveDataFromCustomerAdapter() {
         Intent intent = getIntent();
-        Bundle bundle = intent.getBundleExtra("STUDENT_DATA_FROM_STUDENT_ADAPTER_TO_AD_STU_VIEW_PROFILE");
+        Bundle bundle = intent.getBundleExtra("CUSTOMER_DATA_FROM_CUSTOMER_ADAPTER_TO_AD_CUS_VIEW_PROFILE");
         if (bundle != null) {
-            customerArr = bundle.getParcelableArrayList("STUDENT_DATA_ARRAY");
-            position = bundle.getInt("STUDENT_DATA_POSITION");
+            customerArr = bundle.getParcelableArrayList("CUSTOMER_DATA_ARRAY");
+            position = bundle.getInt("CUSTOMER_DATA_POSITION");
         }
     }
 

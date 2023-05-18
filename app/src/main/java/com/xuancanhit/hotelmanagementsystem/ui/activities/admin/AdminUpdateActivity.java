@@ -111,10 +111,10 @@ public class AdminUpdateActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (isEmptyEditText(edtAdminUpdateName)) {
-                    edtAdminUpdateName.setError("Please enter student's name");
+                    edtAdminUpdateName.setError("Please enter admin name");
                 }
                 if (isEmptyEditText(edtAdminUpdateEmail)) {
-                    edtAdminUpdateEmail.setError("Please enter student's email");
+                    edtAdminUpdateEmail.setError("Please enter admin email");
                 }
 
                 if (isEmailValid(edtAdminUpdateEmail)) {
@@ -265,6 +265,9 @@ public class AdminUpdateActivity extends AppCompatActivity {
                 newAvatar = APIUtils.BASE_URL + "admin/images/" + adminAvatar;
             }
         }
+
+
+
 
 
         DataClient insertData = APIUtils.getData();

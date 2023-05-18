@@ -37,7 +37,7 @@ public interface DataClient {
                                            @Field("CustomerPassword") String CustomerPassword);
 
     @FormUrlEncoded
-    @POST("update.php")
+    @POST("admin/updateCustomer.php")
     Call<String> UpdateCustomerData(@Field("CustomerId") String CustomerId,
                                    @Field("CustomerName") String CustomerName,
                                     @Field("CustomerPhone") String CustomerPhone,
@@ -179,8 +179,17 @@ public interface DataClient {
     @POST("admin/food/uploadImage.php")
     Call<String> UploadFoodItemPhoto(@Part MultipartBody.Part photo);
 
+    @GET("admin/food/delete.php")
+    Call<String> DeleteFoodItemData(@Query("FoodItemId") String RoomId, @Query("FoodItemImage") String FoodItemImage);
 
-
+    @FormUrlEncoded
+    @POST("admin/food/updateFood.php")
+    Call<String> AdminUpdateFoodItemData(@Field("FoodItemId") String FoodItemId,
+                                     @Field("FoodItemName") String FoodItemName,
+                                     @Field("FoodItemPrice") String FoodItemPrice,
+                                     @Field("FoodItemDes") String FoodItemDes,
+                                     @Field("FoodItemImage") String FoodItemImage,
+                                     @Field("FoodItemCurrentImage") String FoodItemCurrentImage);
 //
 //    //Send Notice
 //    @FormUrlEncoded
