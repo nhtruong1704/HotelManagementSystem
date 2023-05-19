@@ -257,16 +257,18 @@ public class AdminCustomerUpdateActivity extends AppCompatActivity {
         String currentAvatar;
         if (!customerArr.get(position).getCusAvatar().equals("")) {
             currentAvatar = customerArr.get(position).getCusAvatar();
-            currentAvatar = currentAvatar.substring(currentAvatar.lastIndexOf("/"));
+//            Toast.makeText(this, currentAvatar, Toast.LENGTH_SHORT).show();
+           currentAvatar = currentAvatar.substring(currentAvatar.lastIndexOf("/"));
         } else {
             currentAvatar = "NO_CURRENT_IMAGE_CUSTOMER_UPDATE";
-        }
+       }
         DataClient dataClient = APIUtils.getData();
         retrofit2.Call<String> callback = dataClient.DeleteCustomerData(customerArr.get(position).getCusId(), currentAvatar);
         callback.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 String res = response.body();
+                Toast.makeText(AdminCustomerUpdateActivity.this, res.trim(), Toast.LENGTH_SHORT).show();
                 if (res.trim().equals("CUSTOMER_ACC_DELETED_SUCCESSFUL")) {
                     Toast.makeText(AdminCustomerUpdateActivity.this, "Deleted Customer " + customerArr.get(position).getCusName() + " Successfully", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(AdminCustomerUpdateActivity.this, AdminCustomerViewAllActivity.class);
@@ -287,7 +289,7 @@ public class AdminCustomerUpdateActivity extends AppCompatActivity {
 
     private void receiveDataFromAdCusViewProfile() {
         Intent intent = getIntent();
-        Bundle bundle = intent.getBundleExtra("CUSTOMER_DATA_FROM_AD_CUS_VIEW_PROFILE_TO_UPDATE");
+        Bundle bundle = intent.getBundleExtra("CUSTOMER_DATA_FROM_AD_CUSTOMER_VIEW_PROFILE_TO_UPDATE");
         if (bundle != null) {
             customerArr = bundle.getParcelableArrayList("CUSTOMER_DATA_ARRAY");
             position = bundle.getInt("CUSTOMER_DATA_POSITION");
@@ -323,54 +325,57 @@ public class AdminCustomerUpdateActivity extends AppCompatActivity {
 
     private void uploadInfo() {
         String currentAvatar, newAvatar;
-        if (customerArr.get(position).getCusAvatar().equals("")) {
-            //curAva = "", newAva=""
-            currentAvatar = "NO_CURRENT_IMAGE_CUSTOMER_UPDATE";
-            if (realPath.equals("")) {
-                newAvatar = "";
-            } else {
-                newAvatar = APIUtils.BASE_URL + "images/" + customerAvatar;
-            }
-        } else {
-            if (realPath.equals("")) {
+        if (customerArr != null && position < customerArr.size()) {
+            if (customerArr.get(position).getCusAvatar().equals("")) {
+                //curAva = "", newAva=""
                 currentAvatar = "NO_CURRENT_IMAGE_CUSTOMER_UPDATE";
-                newAvatar = customerArr.get(position).getCusAvatar();
+                if (realPath.equals("")) {
+                    newAvatar = "";
+                } else {
+                    newAvatar = APIUtils.BASE_URL + "images/" + customerAvatar;
+                }
             } else {
-                currentAvatar = customerArr.get(position).getCusAvatar();
-                currentAvatar = currentAvatar.substring(currentAvatar.lastIndexOf("/"));
-                newAvatar = APIUtils.BASE_URL + "images/" + customerAvatar;
-            }
-        }
-
-        DataClient insertData = APIUtils.getData();
-        Call<String> callbackInfo = insertData.AdminUpdateCustomerData(customerArr.get(position).getCusId(),
-                customerName, customerPhone, customerAddress, customerEmail, isVip, customerPassword, newAvatar, currentAvatar, customerDOB, updateGender);
-        customerArr.get(position).setCusName(customerName);
-        customerArr.get(position).setCusPhone(customerPhone);
-        customerArr.get(position).setCusAddress(customerAddress);
-        customerArr.get(position).setCusEmail(customerEmail);
-        customerArr.get(position).setCusIsVip(isVip);
-        customerArr.get(position).setCusPassword(customerPassword);
-        customerArr.get(position).setCusAvatar(newAvatar);
-        customerArr.get(position).setCusDOB(customerDOB);
-        customerArr.get(position).setCusGender(updateGender);
-
-        callbackInfo.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                String result = response.body();
-                Log.d("Updated Cus Info", result);
-                if (result.trim().equals("CUSTOMER_UPDATE_SUCCESSFUL")) {
-                    Toast.makeText(AdminCustomerUpdateActivity.this, "Successfully Updated Customer Information " + customerName, Toast.LENGTH_SHORT).show();
-                    backToMenu();
+                if (realPath.equals("")) {
+                    currentAvatar = "NO_CURRENT_IMAGE_CUSTOMER_UPDATE";
+                    newAvatar = customerArr.get(position).getCusAvatar();
+                } else {
+                    currentAvatar = customerArr.get(position).getCusAvatar();
+                    currentAvatar = currentAvatar.substring(currentAvatar.lastIndexOf("/"));
+                    newAvatar = APIUtils.BASE_URL + "images/" + customerAvatar;
                 }
             }
 
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                Log.d("Error Updated Cus Info", t.getMessage());
+            DataClient insertData = APIUtils.getData();
+            Call<String> callbackInfo = insertData.AdminUpdateCustomerData(customerArr.get(position).getCusId(),
+                    customerName, customerPhone, customerAddress, customerEmail, isVip, customerPassword, newAvatar, currentAvatar, customerDOB, updateGender);
+            if (position < customerArr.size()) {
+                customerArr.get(position).setCusName(customerName);
+                customerArr.get(position).setCusPhone(customerPhone);
+                customerArr.get(position).setCusAddress(customerAddress);
+                customerArr.get(position).setCusEmail(customerEmail);
+                customerArr.get(position).setCusIsVip(isVip);
+                customerArr.get(position).setCusPassword(customerPassword);
+                customerArr.get(position).setCusAvatar(newAvatar);
+                customerArr.get(position).setCusDOB(customerDOB);
+                customerArr.get(position).setCusGender(updateGender);
             }
-        });
+            callbackInfo.enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    String result = response.body();
+                    Log.d("Updated Cus Info", result);
+                    if (result.trim().equals("CUSTOMER_UPDATE_SUCCESSFUL")) {
+                        Toast.makeText(AdminCustomerUpdateActivity.this, "Successfully Updated Customer Information " + customerName, Toast.LENGTH_SHORT).show();
+                        backToMenu();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    Log.d("Error Updated Cus Info", t.getMessage());
+                }
+            });
+        }
     }
 
     //Send data to menu and end activity current
@@ -380,7 +385,7 @@ public class AdminCustomerUpdateActivity extends AppCompatActivity {
         bundle.putParcelableArrayList("CUSTOMER_DATA_ARRAY", customerArr);
         bundle.putInt("CUSTOMER_DATA_POSITION", position);
         // Data resend to AdStuViewProfile STUDENT_DATA_FROM_STUDENT_ADAPTER_TO_AD_STU_VIEW_PROFILE - just receiver 1 time
-        intent.putExtra("CUSTOMER_DATA_FROM_CUSTOMER_ADAPTER_TO_AD_CUS_VIEW_PROFILE", bundle);
+        intent.putExtra("CUSTOMER_DATA_FROM_CUSTOMER_ADAPTER_TO_AD_CUSTOMER_VIEW_PROFILE", bundle);
         startActivity(intent);
         finish();
     }
@@ -488,51 +493,52 @@ public class AdminCustomerUpdateActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        edtAdCusUpdateName.setText(customerArr.get(position).getCusName());
-        edtAdCusUpdateDOB.setText(customerArr.get(position).getCusDOB());
-        edtAdCusUpdatePhone.setText(customerArr.get(position).getCusPhone());
-        edtAdCusUpdateEmail.setText(customerArr.get(position).getCusEmail());
-        edtAdCusUpdateAddress.setText(customerArr.get(position).getCusAddress());
-        edtAdCusUpdatePassword.setText(customerArr.get(position).getCusPassword());
+        if (customerArr != null && position < customerArr.size()) {
+            edtAdCusUpdateName.setText(customerArr.get(position).getCusName());
+            edtAdCusUpdateDOB.setText(customerArr.get(position).getCusDOB());
+            edtAdCusUpdatePhone.setText(customerArr.get(position).getCusPhone());
+            edtAdCusUpdateEmail.setText(customerArr.get(position).getCusEmail());
+            edtAdCusUpdateAddress.setText(customerArr.get(position).getCusAddress());
+            edtAdCusUpdatePassword.setText(customerArr.get(position).getCusPassword());
 
-        if (!customerArr.get(position).getCusGender().equals("-1")) {
-            if (customerArr.get(position).getCusGender().equals("1")) {
-                rbAdCusUpdateMale.setChecked(true);
-                updateGender = "1";
-            } else {
-                rbAdCusUpdateFemale.setChecked(true);
-                updateGender = "0";
-            }
-        }
-
-
-        if (customerArr.get(position).getCusIsVip().equals("1")) {
-            rbAdCusUpdateActive.setChecked(true);
-            isVip = "1";
-        } else {
-            rbAdCusUpdateInactive.setChecked(true);
-            isVip = "0";
-        }
-
-
-        if (!customerArr.get(position).getCusAvatar().equals("")) {
-            Picasso.get()
-                    .load(customerArr.get(position).getCusAvatar())
-                    .placeholder(R.drawable.review)
-                    .error(R.drawable.review)
-                    .into(ivAdCusUpdateAvt);
-        } else {
             if (!customerArr.get(position).getCusGender().equals("-1")) {
                 if (customerArr.get(position).getCusGender().equals("1")) {
-                    ivAdCusUpdateAvt.setImageResource(R.drawable.male);
+                    rbAdCusUpdateMale.setChecked(true);
+                    updateGender = "1";
                 } else {
-                    ivAdCusUpdateAvt.setImageResource(R.drawable.female);
+                    rbAdCusUpdateFemale.setChecked(true);
+                    updateGender = "0";
                 }
+            }
+
+
+            if (customerArr.get(position).getCusIsVip().equals("1")) {
+                rbAdCusUpdateActive.setChecked(true);
+                isVip = "1";
             } else {
-                ivAdCusUpdateAvt.setImageResource(R.drawable.review);
+                rbAdCusUpdateInactive.setChecked(true);
+                isVip = "0";
+            }
+
+
+            if (!customerArr.get(position).getCusAvatar().equals("")) {
+                Picasso.get()
+                        .load(customerArr.get(position).getCusAvatar())
+                        .placeholder(R.drawable.review)
+                        .error(R.drawable.review)
+                        .into(ivAdCusUpdateAvt);
+            } else {
+                if (!customerArr.get(position).getCusGender().equals("-1")) {
+                    if (customerArr.get(position).getCusGender().equals("1")) {
+                        ivAdCusUpdateAvt.setImageResource(R.drawable.male);
+                    } else {
+                        ivAdCusUpdateAvt.setImageResource(R.drawable.female);
+                    }
+                } else {
+                    ivAdCusUpdateAvt.setImageResource(R.drawable.review);
+                }
             }
         }
-
     }
 
     @Override

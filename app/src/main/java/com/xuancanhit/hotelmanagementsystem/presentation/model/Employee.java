@@ -13,28 +13,22 @@ public class Employee implements Parcelable {
     @SerializedName("EmpName")
     @Expose
     private String empName;
+
+    @SerializedName("EmpPosition")
+    @Expose
+    private String empPosition;
+
+    @SerializedName("EmpSalary")
+    @Expose
+    private String empSalary;
+
     @SerializedName("EmpPhone")
     @Expose
     private String empPhone;
-    @SerializedName("EmpAddress")
-    @Expose
-    private String empAddress;
-    @SerializedName("EmpEmail")
-    @Expose
-    private String empEmail;
-    @SerializedName("EmpIsVip")
-    @Expose
-    private String empIsVip;
 
-    @SerializedName("EmpAvatar")
+    @SerializedName("EmpImage")
     @Expose
-    private String empAvatar;
-    @SerializedName("EmpDOB")
-    @Expose
-    private String empDOB;
-    @SerializedName("EmpGender")
-    @Expose
-    private String empGender;
+    private String empImage;
 
 
 
@@ -42,13 +36,10 @@ public class Employee implements Parcelable {
     protected Employee(Parcel in) {
         empId = in.readString();
         empName = in.readString();
+        empPosition = in.readString();
+        empSalary = in.readString();
         empPhone = in.readString();
-        empAddress = in.readString();
-        empEmail = in.readString();
-        empIsVip = in.readString();
-        empAvatar = in.readString();
-        empDOB = in.readString();
-        empGender = in.readString();
+        empImage = in.readString();
 
     }
 
@@ -73,13 +64,10 @@ public class Employee implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(empId);
         parcel.writeString(empName);
+        parcel.writeString(empPosition);
+        parcel.writeString(empSalary);
         parcel.writeString(empPhone);
-        parcel.writeString(empAddress);
-        parcel.writeString(empEmail);
-        parcel.writeString(empIsVip);
-        parcel.writeString(empAvatar);
-        parcel.writeString(empDOB);
-        parcel.writeString(empGender);
+        parcel.writeString(empImage);
 
     }
 
@@ -107,54 +95,29 @@ public class Employee implements Parcelable {
         this.empPhone = empPhone;
     }
 
-    public String getEmpAddress() {
-        return empAddress;
+    public String getEmpPosition() {
+        return empPosition;
     }
 
-    public void setEmpAddress(String empAddress) {
-        this.empAddress = empAddress;
+    public void setEmpPosition(String empPosition) {
+        this.empPosition = empPosition;
     }
 
-    public String getEmpEmail() {
-        return empEmail;
+    public String getEmpSalary() {
+        return empSalary;
     }
 
-    public void setEmpEmail(String empEmail) {
-        this.empEmail = empEmail;
+    public void setEmpSalary(String empSalary) {
+        this.empSalary = empSalary;
     }
 
-    public String getEmpIsVip() {
-        return empIsVip;
+    public String getEmpImage() {
+        return empImage;
     }
 
-    public void setEmpIsVip(String empIsVip) {
-        this.empIsVip = empIsVip;
+    public void setEmpImage(String empImage) {
+        this.empImage = empImage;
     }
 
-
-
-    public String getEmpAvatar() {
-        return empAvatar;
-    }
-
-    public void setEmpAvatar(String empAvatar) {
-        this.empAvatar = empAvatar;
-    }
-
-    public String getEmpDOB() {
-        return empDOB;
-    }
-
-    public void setEmpDOB(String empDOB) {
-        this.empDOB = empDOB;
-    }
-
-    public String getEmpGender() {
-        return empGender;
-    }
-
-    public void setEmpGender(String empGender) {
-        this.empGender = empGender;
-    }
 
 }

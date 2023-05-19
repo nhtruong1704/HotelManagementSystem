@@ -26,7 +26,7 @@
             android:layout_height="30dp" />
 
         <TextView
-            android:id="@+id/tv_stu_name"
+            android:id="@+id/tv_cus_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"

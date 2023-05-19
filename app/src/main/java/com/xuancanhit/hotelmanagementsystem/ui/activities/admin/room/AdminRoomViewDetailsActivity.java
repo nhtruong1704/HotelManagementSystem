@@ -75,18 +75,20 @@ public class AdminRoomViewDetailsActivity extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     private void initView() {
-        tvAdRoomViewDetailsName.setText(roomArr.get(position).getRoomName());
-        tvAdRoomViewDetailsPrice.setText(roomArr.get(position).getRoomPrice());
-        tvAdRoomViewDetailsDes.setText(roomArr.get(position).getRoomDes());
-        
-        if (!roomArr.get(position).getRoomImage().equals("")) {
-            Picasso.get()
-                    .load(roomArr.get(position).getRoomImage())
-                    .placeholder(R.drawable.bed)
-                    .error(R.drawable.bed)
-                    .into(ivAdRoomViewDetailsImage);
-        } else {
-            ivAdRoomViewDetailsImage.setImageResource(R.drawable.bed);
+        if (roomArr != null && position < roomArr.size()) {
+            tvAdRoomViewDetailsName.setText(roomArr.get(position).getRoomName());
+            tvAdRoomViewDetailsPrice.setText(roomArr.get(position).getRoomPrice());
+            tvAdRoomViewDetailsDes.setText(roomArr.get(position).getRoomDes());
+
+            if (!roomArr.get(position).getRoomImage().equals("")) {
+                Picasso.get()
+                        .load(roomArr.get(position).getRoomImage())
+                        .placeholder(R.drawable.bed)
+                        .error(R.drawable.bed)
+                        .into(ivAdRoomViewDetailsImage);
+            } else {
+                ivAdRoomViewDetailsImage.setImageResource(R.drawable.bed);
+            }
         }
     }
 

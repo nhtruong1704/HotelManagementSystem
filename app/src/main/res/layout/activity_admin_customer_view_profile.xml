@@ -15,7 +15,7 @@
         android:background="#fff">
 
         <ImageView
-            android:id="@+id/iv_ad_stu_view_profile_exit"
+            android:id="@+id/iv_ad_cus_view_profile_exit"
             android:layout_width="65dp"
             android:layout_height="75dp"
             android:padding="7dp"
@@ -147,7 +147,7 @@
                         android:textColor="@color/myColor8" />
 
                     <TextView
-                        android:id="@+id/tv_ad_stu_view_profile_gender"
+                        android:id="@+id/tv_ad_cus_view_profile_gender"
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="7"

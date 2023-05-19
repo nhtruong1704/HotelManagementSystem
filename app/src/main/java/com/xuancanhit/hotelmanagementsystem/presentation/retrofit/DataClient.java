@@ -2,6 +2,7 @@ package com.xuancanhit.hotelmanagementsystem.presentation.retrofit;
 
 import com.xuancanhit.hotelmanagementsystem.presentation.model.Admin;
 import com.xuancanhit.hotelmanagementsystem.presentation.model.Customer;
+import com.xuancanhit.hotelmanagementsystem.presentation.model.Employee;
 import com.xuancanhit.hotelmanagementsystem.presentation.model.FoodItem;
 import com.xuancanhit.hotelmanagementsystem.presentation.model.Room;
 
@@ -27,6 +28,7 @@ public interface DataClient {
 //                                   @Field("CustomerPassword") String CustomerPassword,
 //                                   @Field("CustomerAvatar") String CustomerAvatar);
 //
+    //customer
     @Multipart
     @POST("uploadImage.php")
     Call<String> UploadCustomerPhoto(@Part MultipartBody.Part photo);
@@ -112,7 +114,7 @@ public interface DataClient {
                                       @Field("CustomerGender") String CustomerGender);
 
     //View All Customer
-    @POST("admin/viewAllCus.php")
+    @POST("admin/viewAllCustomer.php")
     Call<List<Customer>> AdminViewAllCustomerData();
 
 
@@ -132,7 +134,7 @@ public interface DataClient {
                                          @Field("CustomerGender") String CustomerGender);
 
 
-    //View All
+    //Room
     @POST("admin/room/viewAllRoom.php")
     Call<List<Room>> AdminViewAllRoomData();
 
@@ -163,7 +165,7 @@ public interface DataClient {
                                      @Field("RoomCurrentImage") String RoomCurrentImage);
 
 
-    //View All
+    //Food
     @POST("admin/food/viewAllFood.php")
     Call<List<FoodItem>> AdminViewAllFoodItemData();
 
@@ -180,7 +182,7 @@ public interface DataClient {
     Call<String> UploadFoodItemPhoto(@Part MultipartBody.Part photo);
 
     @GET("admin/food/delete.php")
-    Call<String> DeleteFoodItemData(@Query("FoodItemId") String RoomId, @Query("FoodItemImage") String FoodItemImage);
+    Call<String> DeleteFoodItemData(@Query("FoodItemId") String FoodItemId, @Query("FoodItemImage") String FoodItemImage);
 
     @FormUrlEncoded
     @POST("admin/food/updateFood.php")
@@ -190,15 +192,41 @@ public interface DataClient {
                                      @Field("FoodItemDes") String FoodItemDes,
                                      @Field("FoodItemImage") String FoodItemImage,
                                      @Field("FoodItemCurrentImage") String FoodItemCurrentImage);
-//
-//    //Send Notice
-//    @FormUrlEncoded
-//    @POST("admin/sendNotice.php")
-//    Call<String> AdminNoticeToCustomerData(@Field("CustomerNotice") String CustomerNotice);
-//
-//    //Reply
-//    @FormUrlEncoded
-//    @POST("admin/replyCustomer.php")
-//    Call<String> AdminReplyCustomerData(@Field("CustomerId") String CustomerId,
-//                                       @Field("CustomerReply") String CustomerReply);
+
+
+
+//employee
+    @POST("admin/employee/viewAllEmployee.php")
+    Call<List<Employee>> AdminViewAllEmployeeData();
+
+    @FormUrlEncoded
+    @POST("admin/employee/addEmployee.php")
+    Call<String> AdminAddEmployeeData(
+            @Field("EmployeeName") String EmployeeName,
+            @Field("EmployeePosition") String EmployeePosition,
+            @Field("EmployeeSalary") String EmployeeSalary,
+            @Field("EmployeePhone") String EmployeePhone,
+            @Field("EmployeeImage") String EmployeeImage);
+
+    @Multipart
+    @POST("admin/employee/uploadImage.php")
+    Call<String> UploadEmployeePhoto(@Part MultipartBody.Part photo);
+
+    @GET("admin/employee/deleteEmployee.php")
+    Call<String> DeleteEmployeeData(@Query("EmployeeId") String EmployeeId, @Query("EmployeeImage") String EmployeeImage);
+
+    @FormUrlEncoded
+    @POST("admin/employee/updateEmployee.php")
+    Call<String> AdminUpdateEmployeeData(@Field("EmployeeId") String EmployeeId,
+                                         @Field("EmployeeName") String EmployeeName,
+                                         @Field("EmployeePosition") String EmployeePosition,
+                                         @Field("EmployeeSalary") String EmployeeSalary,
+                                         @Field("EmployeePhone") String EmployeePhone,
+                                         @Field("EmployeeImage") String EmployeeImage,
+                                         @Field("EmployeeCurrentImage") String EmployeeCurrentImage);
+
+
+
+
+
 }

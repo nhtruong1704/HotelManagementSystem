@@ -90,9 +90,9 @@ public class CustomerListAdapter extends RecyclerView.Adapter<CustomerListAdapte
 
                     Bundle bundle = new Bundle();
 
-                    bundle.putParcelableArrayList("STUDENT_DATA_ARRAY", customerArr);
-                    bundle.putInt("STUDENT_DATA_POSITION", position);
-                    intent.putExtra("STUDENT_DATA_FROM_STUDENT_ADAPTER_TO_AD_STU_VIEW_PROFILE", bundle);
+                    bundle.putParcelableArrayList("CUSTOMER_DATA_ARRAY", customerArr);
+                    bundle.putInt("CUSTOMER_DATA_POSITION", position);
+                    intent.putExtra("CUSTOMER_DATA_FROM_CUSTOMER_ADAPTER_TO_AD_CUSTOMER_VIEW_PROFILE", bundle);
                     view.getContext().startActivity(intent);
                     ((Activity) view.getContext()).finish();
                 }
@@ -116,7 +116,7 @@ public class CustomerListAdapter extends RecyclerView.Adapter<CustomerListAdapte
 
         public CustomerViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvCusName = itemView.findViewById(R.id.tv_stu_name);
+            tvCusName = itemView.findViewById(R.id.tv_cus_name);
             tvCusAddress = itemView.findViewById(R.id.tv_cus_address);
             ivCusAvt = itemView.findViewById(R.id.iv_cus_avt);
             ivCusVip = itemView.findViewById(R.id.iv_cus_vip);

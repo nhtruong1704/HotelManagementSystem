@@ -63,7 +63,7 @@ public class AdminCustomerViewProfileActivity extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putParcelableArrayList("CUSTOMER_DATA_ARRAY", customerArr);
                 bundle.putInt("CUSTOMER_DATA_POSITION", position);
-                intent.putExtra("CUSTOMER_DATA_FROM_AD_CUS_VIEW_PROFILE_TO_UPDATE", bundle);
+                intent.putExtra("CUSTOMER_DATA_FROM_AD_CUSTOMER_VIEW_PROFILE_TO_UPDATE", bundle);
                 startActivity(intent);
                 finish();
             }
@@ -71,7 +71,7 @@ public class AdminCustomerViewProfileActivity extends AppCompatActivity {
     }
     @SuppressLint("SetTextI18n")
     private void initView() {
-        if (customerArr != null && position < customerArr.size()) {
+       if (customerArr != null && position < customerArr.size()) {
             tvAdCusViewProfileName.setText(customerArr.get(position).getCusName());
             tvAdCusViewProfileAddress.setText(customerArr.get(position).getCusAddress());
             tvAdCusViewProfileDOB.setText(customerArr.get(position).getCusDOB());
@@ -91,8 +91,8 @@ public class AdminCustomerViewProfileActivity extends AppCompatActivity {
             if (!customerArr.get(position).getCusAvatar().equals("")) {
                 Picasso.get()
                         .load(customerArr.get(position).getCusAvatar())
-                        .placeholder(R.drawable.admin)
-                        .error(R.drawable.admin)
+                        .placeholder(R.drawable.review)
+                        .error(R.drawable.review)
                         .into(ivAdCusViewProfileAvatar);
             } else {
                 if (!customerArr.get(position).getCusGender().equals("-1")) {
@@ -106,12 +106,12 @@ public class AdminCustomerViewProfileActivity extends AppCompatActivity {
                     ivAdCusViewProfileAvatar.setImageResource(R.drawable.review);
                 }
             }
-        }
+       }
     }
 
     private void receiveDataFromCustomerAdapter() {
         Intent intent = getIntent();
-        Bundle bundle = intent.getBundleExtra("CUSTOMER_DATA_FROM_CUSTOMER_ADAPTER_TO_AD_CUS_VIEW_PROFILE");
+        Bundle bundle = intent.getBundleExtra("CUSTOMER_DATA_FROM_CUSTOMER_ADAPTER_TO_AD_CUSTOMER_VIEW_PROFILE");
         if (bundle != null) {
             customerArr = bundle.getParcelableArrayList("CUSTOMER_DATA_ARRAY");
             position = bundle.getInt("CUSTOMER_DATA_POSITION");
@@ -120,14 +120,14 @@ public class AdminCustomerViewProfileActivity extends AppCompatActivity {
 
     private void initUI() {
         ivAdCusViewProfileAvatar = findViewById(R.id.iv_ad_cus_view_profile_avt);
-        ivAdCusViewProfileExit = findViewById(R.id.iv_ad_stu_view_profile_exit);
+        ivAdCusViewProfileExit = findViewById(R.id.iv_ad_cus_view_profile_exit);
         ivAdCusViewProfileVip = findViewById(R.id.iv_ad_cus_view_profile_vip);
         tvAdCusViewProfileName = findViewById(R.id.tv_ad_cus_view_profile_name);
         tvAdCusViewProfileAddress = findViewById(R.id.tv_ad_cus_view_profile_address);
         tvAdCusViewProfileDOB = findViewById(R.id.tv_ad_cus_view_profile_dob);
         tvAdCusViewProfilePhone = findViewById(R.id.tv_ad_cus_view_profile_phone);
         tvAdCusViewProfileEmail = findViewById(R.id.tv_ad_cus_view_profile_email);
-        tvAdCusViewProfileGender = findViewById(R.id.tv_ad_stu_view_profile_gender);
+        tvAdCusViewProfileGender = findViewById(R.id.tv_ad_cus_view_profile_gender);
         btnAdCusViewProfileExit = findViewById(R.id.btn_ad_cus_view_profile_exit);
         btnAdCusViewProfileUpdate = findViewById(R.id.btn_ad_cus_view_profile_update);
     }
