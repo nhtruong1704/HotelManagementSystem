@@ -119,7 +119,7 @@ public class AdminFoodItemUpdateActivity extends AppCompatActivity {
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        deleteAccStudent();
+                        deleteFood();
                     }
                 });
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -139,12 +139,15 @@ public class AdminFoodItemUpdateActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (isEmptyEditText(edtAdFoodItemUpdateName)) {
                     edtAdFoodItemUpdateName.setError("Please enter food item's name");
+                    return;
                 }
                 if (isEmptyEditText(edtAdFoodItemUpdateDes)) {
                     edtAdFoodItemUpdateDes.setError("Please enter food item's description");
+                    return;
                 }
                 if (isEmptyEditText(edtAdFoodItemUpdatePrice)) {
                     edtAdFoodItemUpdatePrice.setError("Please enter food item's price");
+                    return;
                 }
 
 
@@ -172,13 +175,15 @@ public class AdminFoodItemUpdateActivity extends AppCompatActivity {
             return true;
         }
         return false;
+//        String str = editText.getText().toString().trim();
+//        return TextUtils.isEmpty(str);
     }
 
-    private void deleteAccStudent() {
+    private void deleteFood() {
         String currentImage;
         if (!foodItemArr.get(position).getFoodItemImage().equals("")) {
             currentImage = foodItemArr.get(position).getFoodItemImage();
-            currentImage = currentImage.substring(currentImage.lastIndexOf("/"));
+            currentImage = currentImage.substring(currentImage.lastIndexOf("/")+1);
         } else {
             currentImage = "NO_CURRENT_IMAGE_FOOD_ITEM_UPDATE";
         }
@@ -237,56 +242,58 @@ public class AdminFoodItemUpdateActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Log.d("Error Updated Stu Photo", t.getMessage());
+                Log.d("Err Updated Food Photo", t.getMessage());
             }
         });
     }
 
     private void uploadInfo() {
         String currentImage, newImage;
-        if (foodItemArr.get(position).getFoodItemImage().equals("")) {
-            //curAva = "", newAva=""
-            currentImage = "NO_CURRENT_IMAGE_FOOD_ITEM_UPDATE";
-            if (realPath.equals("")) {
-                newImage = "";
-            } else {
-                newImage = APIUtils.BASE_URL + "admin/food/images/" + foodItemImage;
-            }
-        } else {
-            if (realPath.equals("")) {
+        if (foodItemArr != null && position < foodItemArr.size()) {
+            if (foodItemArr.get(position).getFoodItemImage().equals("")) {
+                //curAva = "", newAva=""
                 currentImage = "NO_CURRENT_IMAGE_FOOD_ITEM_UPDATE";
-                newImage = foodItemArr.get(position).getFoodItemImage();
+                if (realPath.equals("")) {
+                    newImage = "";
+                } else {
+                    newImage = APIUtils.BASE_URL + "admin/food/images/" + foodItemImage;
+                }
             } else {
-                currentImage = foodItemArr.get(position).getFoodItemImage();
-                currentImage = currentImage.substring(currentImage.lastIndexOf("/"));
-                newImage = APIUtils.BASE_URL + "admin/food/images/" + foodItemImage;
-            }
-        }
-
-        DataClient insertData = APIUtils.getData();
-        Call<String> callbackInfo = insertData.AdminUpdateFoodItemData(foodItemArr.get(position).getFoodItemId(),
-                foodItemName, foodItemPrice, foodItemDes, newImage, currentImage);
-        foodItemArr.get(position).setFoodItemName(foodItemName);
-        foodItemArr.get(position).setFoodItemPrice(foodItemPrice);
-        foodItemArr.get(position).setFoodItemDes(foodItemDes);
-        foodItemArr.get(position).setFoodItemImage(newImage);
-
-        callbackInfo.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                String result = response.body();
-                Log.d("Updated food Item Info", result);
-                if (result.trim().equals("FOOD_ITEM_UPDATE_SUCCESSFUL")) {
-                    Toast.makeText(AdminFoodItemUpdateActivity.this, "Successfully Updated Food Item Information " + foodItemName, Toast.LENGTH_SHORT).show();
-                    backToMenu();
+                if (realPath.equals("")) {
+                    currentImage = "NO_CURRENT_IMAGE_FOOD_ITEM_UPDATE";
+                    newImage = foodItemArr.get(position).getFoodItemImage();
+                } else {
+                    currentImage = foodItemArr.get(position).getFoodItemImage();
+                    currentImage = currentImage.substring(currentImage.lastIndexOf("/") + 1);
+                    newImage = APIUtils.BASE_URL + "admin/food/images/" + foodItemImage;
                 }
             }
 
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                Log.d("Err Updated Food Info", t.getMessage());
-            }
-        });
+            DataClient insertData = APIUtils.getData();
+            Call<String> callbackInfo = insertData.AdminUpdateFoodItemData(foodItemArr.get(position).getFoodItemId(),
+                    foodItemName, foodItemPrice, foodItemDes, newImage, currentImage);
+            foodItemArr.get(position).setFoodItemName(foodItemName);
+            foodItemArr.get(position).setFoodItemPrice(foodItemPrice);
+            foodItemArr.get(position).setFoodItemDes(foodItemDes);
+            foodItemArr.get(position).setFoodItemImage(newImage);
+
+            callbackInfo.enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    String result = response.body();
+                    Log.d("Updated food Item Info", result);
+                    if (result.trim().equals("FOOD_ITEM_UPDATE_SUCCESSFUL")) {
+                        Toast.makeText(AdminFoodItemUpdateActivity.this, "Successfully Updated Food Item Information " + foodItemName, Toast.LENGTH_SHORT).show();
+                        backToMenu();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    Log.d("Err Updated Food Info", t.getMessage());
+                }
+            });
+        }
     }
 
     //Send data to menu and end activity current
@@ -406,5 +413,6 @@ public class AdminFoodItemUpdateActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         backToMenu();
+        super.onBackPressed();
     }
 }

@@ -114,12 +114,12 @@ public class AdminRoomUpdateActivity extends AppCompatActivity {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(AdminRoomUpdateActivity.this);
                 builder.setIcon(R.drawable.ic_baseline_delete_24);
-                builder.setTitle("Delete this student account");
+                builder.setTitle("Delete this room");
                 builder.setMessage("Are you sure want to delete room " + roomArr.get(position).getRoomName() + "?");
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        deleteAccStudent();
+                        deleteRoom();
                     }
                 });
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -139,12 +139,15 @@ public class AdminRoomUpdateActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (isEmptyEditText(edtAdRoomUpdateName)) {
                     edtAdRoomUpdateName.setError("Please enter room's name");
+                    return;
                 }
                 if (isEmptyEditText(edtAdRoomUpdateDes)) {
                     edtAdRoomUpdateDes.setError("Please enter room's description");
+                    return;
                 }
                 if (isEmptyEditText(edtAdRoomUpdatePrice)) {
                     edtAdRoomUpdatePrice.setError("Please enter room's price");
+                    return;
                 }
 
 
@@ -172,15 +175,18 @@ public class AdminRoomUpdateActivity extends AppCompatActivity {
             return true;
         }
         return false;
+
+//        String str = editText.getText().toString().trim();
+//        return TextUtils.isEmpty(str);
     }
 
-    private void deleteAccStudent() {
+    private void deleteRoom() {
         String currentImage;
         if (!roomArr.get(position).getRoomImage().equals("")) {
             currentImage = roomArr.get(position).getRoomImage();
-            currentImage = currentImage.substring(currentImage.lastIndexOf("/"));
+            currentImage = currentImage.substring(currentImage.lastIndexOf("/")+1);
         } else {
-            currentImage = "NO_IMAGE_ROOM_UPDATE";
+            currentImage = "NO_CURRENT_IMAGE_CUSTOMER_UPDATE";
         }
         DataClient dataClient = APIUtils.getData();
         retrofit2.Call<String> callback = dataClient.DeleteRoomData(roomArr.get(position).getRoomId(), currentImage);
@@ -237,56 +243,58 @@ public class AdminRoomUpdateActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Log.d("Error Updated Stu Photo", t.getMessage());
+                Log.d("Err Updated Room Photo", t.getMessage());
             }
         });
     }
 
     private void uploadInfo() {
         String currentImage, newImage;
-        if (roomArr.get(position).getRoomImage().equals("")) {
-            //curAva = "", newAva=""
-            currentImage = "NO_CURRENT_IMAGE_ROOM_UPDATE";
-            if (realPath.equals("")) {
-                newImage = "";
-            } else {
-                newImage = APIUtils.BASE_URL + "admin/room/images/" + roomImage;
-            }
-        } else {
-            if (realPath.equals("")) {
+        if (roomArr != null && position < roomArr.size()) {
+            if (roomArr.get(position).getRoomImage().equals("")) {
+                //curAva = "", newAva=""
                 currentImage = "NO_CURRENT_IMAGE_ROOM_UPDATE";
-                newImage = roomArr.get(position).getRoomImage();
+                if (realPath.equals("")) {
+                    newImage = "";
+                } else {
+                    newImage = APIUtils.BASE_URL + "admin/room/images/" + roomImage;
+                }
             } else {
-                currentImage = roomArr.get(position).getRoomImage();
-                currentImage = currentImage.substring(currentImage.lastIndexOf("/"));
-                newImage = APIUtils.BASE_URL + "admin/room/images/" + roomImage;
-            }
-        }
-
-        DataClient insertData = APIUtils.getData();
-        Call<String> callbackInfo = insertData.AdminUpdateRoomData(roomArr.get(position).getRoomId(),
-                roomName, roomPrice, roomDes, newImage, currentImage);
-        roomArr.get(position).setRoomName(roomName);
-        roomArr.get(position).setRoomPrice(roomPrice);
-        roomArr.get(position).setRoomDes(roomDes);
-        roomArr.get(position).setRoomImage(newImage);
-
-        callbackInfo.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                String result = response.body();
-                Log.d("Updated Room Info", result);
-                if (result.trim().equals("ROOM_UPDATE_SUCCESSFUL")) {
-                    Toast.makeText(AdminRoomUpdateActivity.this, "Successfully Updated Room Information " + roomName, Toast.LENGTH_SHORT).show();
-                    backToMenu();
+                if (realPath.equals("")) {
+                    currentImage = "NO_CURRENT_IMAGE_ROOM_UPDATE";
+                    newImage = roomArr.get(position).getRoomImage();
+                } else {
+                    currentImage = roomArr.get(position).getRoomImage();
+                    currentImage = currentImage.substring(currentImage.lastIndexOf("/" )+ 1);
+                    newImage = APIUtils.BASE_URL + "admin/room/images/" + roomImage;
                 }
             }
 
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                Log.d("Err Updated Room Info", t.getMessage());
-            }
-        });
+            DataClient insertData = APIUtils.getData();
+            Call<String> callbackInfo = insertData.AdminUpdateRoomData(roomArr.get(position).getRoomId(),
+                    roomName, roomPrice, roomDes, newImage, currentImage);
+            roomArr.get(position).setRoomName(roomName);
+            roomArr.get(position).setRoomPrice(roomPrice);
+            roomArr.get(position).setRoomDes(roomDes);
+            roomArr.get(position).setRoomImage(newImage);
+
+            callbackInfo.enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    String result = response.body();
+                    Log.d("Updated Room Info", result);
+                    if (result.trim().equals("ROOM_UPDATE_SUCCESSFUL")) {
+                        Toast.makeText(AdminRoomUpdateActivity.this, "Successfully Updated Room Information " + roomName, Toast.LENGTH_SHORT).show();
+                        backToMenu();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    Log.d("Err Updated Room Info", t.getMessage());
+                }
+            });
+        }
     }
 
     //Send data to menu and end activity current
@@ -406,5 +414,6 @@ public class AdminRoomUpdateActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         backToMenu();
+        super.onBackPressed();
     }
 }
