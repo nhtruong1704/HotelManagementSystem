@@ -184,9 +184,9 @@ public class AdminRoomUpdateActivity extends AppCompatActivity {
         String currentImage;
         if (!roomArr.get(position).getRoomImage().equals("")) {
             currentImage = roomArr.get(position).getRoomImage();
-            currentImage = currentImage.substring(currentImage.lastIndexOf("/")+1);
+            currentImage = currentImage.substring(currentImage.lastIndexOf("/"));
         } else {
-            currentImage = "NO_CURRENT_IMAGE_CUSTOMER_UPDATE";
+            currentImage = "NO_CURRENT_IMAGE_ROOM_UPDATE";
         }
         DataClient dataClient = APIUtils.getData();
         retrofit2.Call<String> callback = dataClient.DeleteRoomData(roomArr.get(position).getRoomId(), currentImage);

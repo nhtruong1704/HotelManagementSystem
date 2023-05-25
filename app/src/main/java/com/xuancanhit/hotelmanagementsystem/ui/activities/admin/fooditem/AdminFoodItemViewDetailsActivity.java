@@ -98,7 +98,7 @@ public class AdminFoodItemViewDetailsActivity extends AppCompatActivity {
 
     private void receiveDataFromFoodItemAdapter() {
         Intent intent = getIntent();
-        Bundle bundle = intent.getBundleExtra("FOOD_ITEM_DATA_FROM_ROOM_ADAPTER_TO_AD_FOOD_ITEM_VIEW_DETAILS");
+        Bundle bundle = intent.getBundleExtra("FOOD_ITEM_DATA_FROM_FOOD_ITEM_ADAPTER_TO_AD_FOOD_ITEM_VIEW_DETAILS");
         if (bundle != null) {
            foodItemArr = bundle.getParcelableArrayList("FOOD_ITEM_DATA_ARRAY");
             position = bundle.getInt("FOOD_ITEM_DATA_POSITION");

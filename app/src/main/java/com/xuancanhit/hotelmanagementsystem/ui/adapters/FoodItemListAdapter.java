@@ -76,7 +76,7 @@ public class FoodItemListAdapter extends RecyclerView.Adapter<FoodItemListAdapte
 
                     bundle.putParcelableArrayList("FOOD_ITEM_DATA_ARRAY", foodItemArr);
                     bundle.putInt("FOOD_ITEM_DATA_POSITION", position);
-                    intent.putExtra("FOOD_ITEM_DATA_FROM_ROOM_ADAPTER_TO_AD_FOOD_ITEM_VIEW_DETAILS", bundle);
+                    intent.putExtra("FOOD_ITEM_DATA_FROM_FOOD_ITEM_ADAPTER_TO_AD_FOOD_ITEM_VIEW_DETAILS", bundle);
                     view.getContext().startActivity(intent);
                     ((Activity) view.getContext()).finish();
                 }
