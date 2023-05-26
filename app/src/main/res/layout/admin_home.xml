@@ -90,7 +90,7 @@
                 app:cardElevation="5dp">
 
                 <Button
-                    android:id="@+id/btn_student_view_all"
+                    android:id="@+id/btn_customer_view_all"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="?attr/selectableItemBackground"
@@ -152,7 +152,7 @@
                 app:cardElevation="5dp">
 
                 <Button
-                    android:id="@+id/btn_student_notice"
+                    android:id="@+id/btn_admin_menu_list_food_item"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="?attr/selectableItemBackground"
@@ -188,7 +188,7 @@
                 app:cardElevation="5dp">
 
                 <Button
-                    android:id="@+id/btn_student_report"
+                    android:id="@+id/btn_admin_menu_list_employee"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="?attr/selectableItemBackground"

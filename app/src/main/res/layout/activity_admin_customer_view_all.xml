@@ -12,7 +12,7 @@
         android:layout_marginTop="5dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_stu_view_all_search"
+            android:id="@+id/edt_cus_view_all_search"
             style="@style/modifiedEditText"
             android:drawableStart="@drawable/ic_baseline_search_24"
             android:drawableTint="?attr/colorControlNormal"
@@ -22,13 +22,13 @@
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
-        android:id="@+id/srl_ad_stu_view_all"
+        android:id="@+id/srl_ad_cus_view_all"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="70dp">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_ad_stu_view_all_items"
+            android:id="@+id/rv_ad_cus_view_all_items"
             android:layout_width="match_parent"
             android:scrollbars="vertical"
             android:layout_height="match_parent" />
@@ -36,7 +36,7 @@
 
 
     <ImageButton
-        android:id="@+id/ib_stu_add"
+        android:id="@+id/ib_cus_add"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_alignParentEnd="true"

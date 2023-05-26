@@ -16,6 +16,7 @@ import com.xuancanhit.hotelmanagementsystem.presentation.model.Admin;
 import com.xuancanhit.hotelmanagementsystem.ui.activities.admin.customer.AdminCustomerAddActivity;
 import com.xuancanhit.hotelmanagementsystem.ui.activities.admin.customer.AdminCustomerViewAllActivity;
 import com.xuancanhit.hotelmanagementsystem.ui.activities.admin.fooditem.AdminFoodItemViewAllActivity;
+import com.xuancanhit.hotelmanagementsystem.ui.activities.admin.employee.AdminEmployeeViewAllActivity;
 import com.xuancanhit.hotelmanagementsystem.ui.activities.admin.room.AdminRoomViewAllActivity;
 
 import android.annotation.SuppressLint;
@@ -37,7 +38,7 @@ public class AdminMenuActivity extends AppCompatActivity {
     Toolbar toolbar;
     NavigationView navigationView;
 
-    Button viewListRoom, viewCustomer, noticeCustomer, reportCustomer, btnHomeMenuLogout, btnAdminEdit;
+    Button viewListRoom, viewListCustomer, viewListFoodItem, viewListEmployee, btnHomeMenuLogout, btnAdminEdit;
     ImageView ivAdminAvt, ivAdNavHeader;
     TextView tvAdminName, tvAdNavHeaderName, tvAdNavHeaderEmail;
     ArrayList<Admin> adminArr;
@@ -69,7 +70,7 @@ public class AdminMenuActivity extends AppCompatActivity {
         });
 
         //View All Button
-        viewCustomer.setOnClickListener(new View.OnClickListener() {
+        viewListCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(AdminMenuActivity.this, AdminCustomerViewAllActivity.class));
@@ -85,7 +86,7 @@ public class AdminMenuActivity extends AppCompatActivity {
         });
 
         //Button Notice
-        noticeCustomer.setOnClickListener(new View.OnClickListener() {
+        viewListFoodItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(AdminMenuActivity.this, AdminFoodItemViewAllActivity.class));
@@ -93,10 +94,10 @@ public class AdminMenuActivity extends AppCompatActivity {
         });
 
         //Button Report
-        reportCustomer.setOnClickListener(new View.OnClickListener() {
+        viewListEmployee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(AdminMenuActivity.this, AdminCustomerReportActivity.class));
+                startActivity(new Intent(AdminMenuActivity.this, AdminEmployeeViewAllActivity.class));
             }
         });
 
@@ -131,12 +132,12 @@ public class AdminMenuActivity extends AppCompatActivity {
                         startActivity(new Intent(AdminMenuActivity.this, AdminCustomerViewAllActivity.class));
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
-                    case R.id.it_ad_nav_dra_menu_notice:
+                    case R.id.it_ad_nav_dra_menu_view_all_food_item:
                         startActivity(new Intent(AdminMenuActivity.this, AdminFoodItemViewAllActivity.class));
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
-                    case R.id.it_ad_nav_dra_menu_report:
-//                        startActivity(new Intent(AdminMenuActivity.this, AdminCustomerReportActivity.class));
+                    case R.id.it_ad_nav_dra_menu_view_all_room:
+                        startActivity(new Intent(AdminMenuActivity.this, AdminRoomViewAllActivity.class));
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.it_ad_nav_dra_menu_admin_profile:
@@ -186,9 +187,9 @@ public class AdminMenuActivity extends AppCompatActivity {
         tvAdminName = findViewById(R.id.tv_admin_name);
         btnHomeMenuLogout = findViewById(R.id.btn_home_menu_logout);
         viewListRoom = findViewById(R.id.btn_admin_menu_list_room);
-        viewCustomer = findViewById(R.id.btn_student_view_all);
-        noticeCustomer = findViewById(R.id.btn_student_notice);
-        reportCustomer = findViewById(R.id.btn_student_report);
+        viewListCustomer = findViewById(R.id.btn_customer_view_all);
+        viewListFoodItem = findViewById(R.id.btn_admin_menu_list_food_item);
+        viewListEmployee = findViewById(R.id.btn_admin_menu_list_employee);
         drawerLayout = findViewById(R.id.dl_admin_drawer);
         toolbar = findViewById(R.id.tb_admin_toolBar);
         navigationView = findViewById(R.id.nv_admin);

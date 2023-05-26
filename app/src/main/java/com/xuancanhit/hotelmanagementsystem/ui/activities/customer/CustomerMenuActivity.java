@@ -131,42 +131,42 @@ public class CustomerMenuActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 //Fragment fragment = null;
                 switch (id) {
-                    case R.id.it_stu_nav_dra_menu_dashboard:
+                    case R.id.it_cus_nav_dra_menu_dashboard:
 //                        fragment = new DashBoardFragment();
 //                        loadFragment(fragment);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
-                    case R.id.it_stu_nav_dra_menu_update_profile:
+                    case R.id.it_cus_nav_dra_menu_update_profile:
 //                        Intent intent = new Intent(CustomerMenuActivity.this, StudentUpdateActivity.class);
 //                        intent.putExtra("CUSTOMER_DATA_FROM_MENU_TO_UPDATE", customerArr);
 //                        startActivityForResult(intent, CUSTOMER_CHANGE_PASSWORD_ACTIVITY);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
-                    case R.id.it_stu_nav_dra_menu_notice:
+                    case R.id.it_cus_nav_dra_menu_room:
 //                        Intent intent1 = new Intent(CustomerMenuActivity.this, StudentNoticeFromAdminActivity.class);
 //                        intent1.putExtra("CUSTOMER_DATA_FROM_MENU_TO_NOTICE", customerArr);
 //                        startActivity(intent1);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
-                    case R.id.it_stu_nav_dra_menu_report:
+                    case R.id.it_cus_nav_dra_menu_food_item:
 //                        Intent intent2 = new Intent(CustomerMenuActivity.this, StudentReportActivity.class);
 //                        intent2.putExtra("CUSTOMER_DATA_FROM_MENU_TO_REPORT", customerArr);
 //                        startActivity(intent2);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
-                    case R.id.it_stu_nav_dra_menu_stu_profile:
+                    case R.id.it_cus_nav_dra_menu_cus_profile:
 //                        Intent intent3 = new Intent(CustomerMenuActivity.this, StudentViewProfileActivity.class);
 //                        intent3.putExtra("CUSTOMER_DATA_FROM_MENU_TO_VIEW_PROFILE", customerArr);
 //                        startActivityForResult(intent3, CUSTOMER_VIEW_PROFILE_ACTIVITY);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
-                    case R.id.it_stu_nav_dra_menu_change_password:
+                    case R.id.it_cus_nav_dra_menu_change_password:
 //                        Intent intent4 = new Intent(CustomerMenuActivity.this, StudentChangePasswordActivity.class);
 //                        intent4.putExtra("CUSTOMER_DATA_FROM_MENU_TO_CHANGE_PASSWORD", customerArr);
 //                        startActivityForResult(intent4, CUSTOMER_CHANGE_PASSWORD_ACTIVITY);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
-                    case R.id.it_stu_nav_dra_menu_logout:
+                    case R.id.it_cus_nav_dra_menu_logout:
                         logout();
                         break;
                     default:
@@ -242,7 +242,7 @@ public class CustomerMenuActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        navigationView.getMenu().findItem(R.id.it_stu_nav_dra_menu_dashboard).setChecked(true);
+        navigationView.getMenu().findItem(R.id.it_cus_nav_dra_menu_dashboard).setChecked(true);
         super.onResume();
     }
 

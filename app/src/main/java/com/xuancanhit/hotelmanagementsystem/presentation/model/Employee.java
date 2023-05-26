@@ -26,9 +26,9 @@ public class Employee implements Parcelable {
     @Expose
     private String empPhone;
 
-    @SerializedName("EmpImage")
+    @SerializedName("EmpAvatar")
     @Expose
-    private String empImage;
+    private String empAvatar;
 
 
 
@@ -39,7 +39,7 @@ public class Employee implements Parcelable {
         empPosition = in.readString();
         empSalary = in.readString();
         empPhone = in.readString();
-        empImage = in.readString();
+        empAvatar = in.readString();
 
     }
 
@@ -67,7 +67,7 @@ public class Employee implements Parcelable {
         parcel.writeString(empPosition);
         parcel.writeString(empSalary);
         parcel.writeString(empPhone);
-        parcel.writeString(empImage);
+        parcel.writeString(empAvatar);
 
     }
 
@@ -111,12 +111,12 @@ public class Employee implements Parcelable {
         this.empSalary = empSalary;
     }
 
-    public String getEmpImage() {
-        return empImage;
+    public String getEmpAvatar() {
+        return empAvatar;
     }
 
-    public void setEmpImage(String empImage) {
-        this.empImage = empImage;
+    public void setEmpAvatar(String empAvatar) {
+        this.empAvatar = empAvatar;
     }
 
 

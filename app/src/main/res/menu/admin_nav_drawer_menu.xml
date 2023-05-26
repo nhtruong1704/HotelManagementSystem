@@ -14,13 +14,13 @@
             android:icon="@drawable/ic_baseline_format_list_bulleted_24"
             android:title="View List Client" />
         <item
-            android:id="@+id/it_ad_nav_dra_menu_notice"
+            android:id="@+id/it_ad_nav_dra_menu_view_all_food_item"
             android:icon="@drawable/ic_baseline_notification_add_24"
-            android:title="Create Notice" />
+            android:title="View List Food" />
         <item
-            android:id="@+id/it_ad_nav_dra_menu_report"
+            android:id="@+id/it_ad_nav_dra_menu_view_all_room"
             android:icon="@drawable/ic_baseline_message_24"
-            android:title="Report From Student" />
+            android:title="View List Room" />
     </group>
     <item android:title="">
         <menu>

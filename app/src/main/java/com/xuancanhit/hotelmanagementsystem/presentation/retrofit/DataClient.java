@@ -222,8 +222,8 @@ public interface DataClient {
                                          @Field("EmployeePosition") String EmployeePosition,
                                          @Field("EmployeeSalary") String EmployeeSalary,
                                          @Field("EmployeePhone") String EmployeePhone,
-                                         @Field("EmployeeImage") String EmployeeImage,
-                                         @Field("EmployeeCurrentImage") String EmployeeCurrentImage);
+                                         @Field("EmployeeAvatar") String EmployeeAvatar,
+                                         @Field("EmployeeCurrentAvatar") String EmployeeCurrentAvatar);
 
 
 

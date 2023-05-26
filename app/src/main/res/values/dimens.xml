@@ -6,7 +6,7 @@
     <dimen name="loginCardRadius">20dp</dimen>
     <dimen name="loginViewsMargin">20dp</dimen>
     <dimen name="signup_text_margin_top">10dp</dimen>
-    <dimen tools:override = "true"
-        name = "design_navigation_separator_vertical_padding">20dp</dimen>
+    <dimen name="design_navigation_separator_vertical_padding" tools:override="true">20dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 
 </resources>

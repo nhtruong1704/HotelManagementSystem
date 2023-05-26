@@ -33,22 +33,23 @@ import retrofit2.Response;
 
 public class AdminCustomerViewAllActivity extends AppCompatActivity {
 
-    private ArrayList<Customer> studentArr, studentArrSearch;
+    private ArrayList<Customer> customerArr, customerArrSearch;
     RecyclerView rvItems;
-    SwipeRefreshLayout srlAdStuViewAll;
-    private CustomerListAdapter studentListAdapter;
+    SwipeRefreshLayout srlAdCusViewAll;
+    private CustomerListAdapter customerListAdapter;
 
-    ImageButton ibStuAdd;
-    EditText edtStuViewAllSearch;
+    ImageButton ibCusAdd;
+    EditText edtCusViewAllSearch;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_customer_view_all);
 
         //Search
-        edtStuViewAllSearch = findViewById(R.id.edt_stu_view_all_search);
-        edtStuViewAllSearch.addTextChangedListener(new TextWatcher() {
+        edtCusViewAllSearch = findViewById(R.id.edt_cus_view_all_search);
+        edtCusViewAllSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -68,20 +69,20 @@ public class AdminCustomerViewAllActivity extends AppCompatActivity {
 
 
         //SwipeRefreshLayout
-        srlAdStuViewAll = findViewById(R.id.srl_ad_stu_view_all);
-        srlAdStuViewAll.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        srlAdCusViewAll = findViewById(R.id.srl_ad_cus_view_all);
+        srlAdCusViewAll.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onRefresh() {
                 readData();
-                studentListAdapter.notifyDataSetChanged();
-                srlAdStuViewAll.setRefreshing(false);
+                customerListAdapter.notifyDataSetChanged();
+                srlAdCusViewAll.setRefreshing(false);
             }
         });
 
         //Circle Button Add
-        ibStuAdd = findViewById(R.id.ib_stu_add);
-        ibStuAdd.setOnClickListener(new View.OnClickListener() {
+        ibCusAdd = findViewById(R.id.ib_cus_add);
+        ibCusAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(AdminCustomerViewAllActivity.this, AdminCustomerAddActivity.class));
@@ -97,53 +98,53 @@ public class AdminCustomerViewAllActivity extends AppCompatActivity {
     public void FilterData(String textSearch) {
         textSearch = textSearch.toLowerCase(Locale.getDefault());
         Log.d("filter", textSearch);
-        studentArr.clear();
+        customerArr.clear();
         if(textSearch.length() == 0) {
-            studentArr.addAll(studentArrSearch);
+            customerArr.addAll(customerArrSearch);
             Log.d("load data", "all");
         }
         else {
             Log.d("load data", "filtered");
-            for (int i=0; i<studentArrSearch.size(); i++) {
-                if(studentArrSearch.get(i).getCusName().toLowerCase(Locale.getDefault()).contains(textSearch) ||
-                        studentArrSearch.get(i).getCusAddress().toLowerCase(Locale.getDefault()).contains(textSearch)) {
-                    studentArr.add(studentArrSearch.get(i));
+            for (int i=0; i<customerArrSearch.size(); i++) {
+                if(customerArrSearch.get(i).getCusName().toLowerCase(Locale.getDefault()).contains(textSearch) ||
+                        customerArrSearch.get(i).getCusAddress().toLowerCase(Locale.getDefault()).contains(textSearch)) {
+                    customerArr.add(customerArrSearch.get(i));
                 }
             }
         }
-        studentListAdapter.notifyDataSetChanged();
+        customerListAdapter.notifyDataSetChanged();
     }
 
     private void readData() {
-        studentArr.clear();
-        studentArrSearch.clear();
+        customerArr.clear();
+        customerArrSearch.clear();
         DataClient dataClient = APIUtils.getData();
         retrofit2.Call<List<Customer>> callback = dataClient.AdminViewAllCustomerData();
         callback.enqueue(new Callback<List<Customer>>() {
             @Override
             public void onResponse(Call<List<Customer>> call, Response<List<Customer>> response) {
-                studentArr = (ArrayList<Customer>) response.body();
+                customerArr = (ArrayList<Customer>) response.body();
 
-                if (studentArr.size() > 0) {
-                    studentArrSearch.addAll(studentArr);
-                    studentListAdapter = new CustomerListAdapter(getApplicationContext(), studentArr);
-                    //studentListAdapter.notifyDataSetChanged();
-                    rvItems.setAdapter(studentListAdapter);
+                if (customerArr.size() > 0) {
+                    customerArrSearch.addAll(customerArr);
+                    customerListAdapter = new CustomerListAdapter(getApplicationContext(), customerArr);
+                    //customerListAdapter.notifyDataSetChanged();
+                    rvItems.setAdapter(customerListAdapter);
 
                 }
             }
 
             @Override
             public void onFailure(Call<List<Customer>> call, Throwable t) {
-                Log.d("Error load all stu", t.getMessage());
+                Log.d("Error load all Cus", t.getMessage());
             }
         });
     }
 
     private void addControls() {
-        studentArr = new ArrayList<>();
-        studentArrSearch = new ArrayList<>();
-        rvItems = findViewById(R.id.rv_ad_stu_view_all_items);
+        customerArr = new ArrayList<>();
+        customerArrSearch = new ArrayList<>();
+        rvItems = findViewById(R.id.rv_ad_cus_view_all_items);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         rvItems.setLayoutManager(layoutManager);
         rvItems.setHasFixedSize(true);
@@ -154,7 +155,7 @@ public class AdminCustomerViewAllActivity extends AppCompatActivity {
 
         //Fix: No adapter attached; skipping layout
         //Set adapter first after show
-        studentListAdapter = new CustomerListAdapter(getApplicationContext(), studentArr); // this
-        rvItems.setAdapter(studentListAdapter);
+        customerListAdapter = new CustomerListAdapter(getApplicationContext(), customerArr); // this
+        rvItems.setAdapter(customerListAdapter);
     }
 }

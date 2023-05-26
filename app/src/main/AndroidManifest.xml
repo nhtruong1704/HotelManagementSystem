@@ -17,6 +17,23 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".AdminEmployeeUpdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminEmployeeViewProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminEmployeeViewAllActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EmployeeListAdapter1"
+            android:exported="false" />
+        <activity
+            android:name=".AdminEmployeeAddActivity"
+            android:exported="false"
+            android:label="@string/title_activity_admin_employee_add"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".MainActivitytest"
             android:exported="false" />
         <activity
