@@ -206,14 +206,14 @@ public interface DataClient {
             @Field("EmployeePosition") String EmployeePosition,
             @Field("EmployeeSalary") String EmployeeSalary,
             @Field("EmployeePhone") String EmployeePhone,
-            @Field("EmployeeImage") String EmployeeImage);
+            @Field("EmployeeAvatar") String EmployeeAvatar);
 
     @Multipart
     @POST("admin/employee/uploadImage.php")
     Call<String> UploadEmployeePhoto(@Part MultipartBody.Part photo);
 
     @GET("admin/employee/deleteEmployee.php")
-    Call<String> DeleteEmployeeData(@Query("EmployeeId") String EmployeeId, @Query("EmployeeImage") String EmployeeImage);
+    Call<String> DeleteEmployeeData(@Query("EmployeeId") String EmployeeId, @Query("EmployeeAvatar") String EmployeeAvatar);
 
     @FormUrlEncoded
     @POST("admin/employee/updateEmployee.php")

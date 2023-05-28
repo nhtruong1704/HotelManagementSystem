@@ -72,24 +72,24 @@ public class CustomerMenuActivity extends AppCompatActivity {
         });
 
         //Button Update Profile
-        btnMyBill.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Intent intent = new Intent(CustomerMenuActivity.this, StudentUpdateActivity.class);
-//                intent.putExtra("CUSTOMER_DATA_FROM_MENU_TO_UPDATE", customerArr);
-//                startActivityForResult(intent, CUSTOMER_UPDATE_ACTIVITY);
-            }
-        });
+//        btnMyBill.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                Intent intent = new Intent(CustomerMenuActivity.this, StudentUpdateActivity.class);
+////                intent.putExtra("CUSTOMER_DATA_FROM_MENU_TO_UPDATE", customerArr);
+////                startActivityForResult(intent, CUSTOMER_UPDATE_ACTIVITY);
+//            }
+//        });
 
         //Button Change Password
-        btnCusChangePassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Intent intent = new Intent(CustomerMenuActivity.this, StudentChangePasswordActivity.class);
-//                intent.putExtra("CUSTOMER_DATA_FROM_MENU_TO_CHANGE_PASSWORD", customerArr);
-//                startActivityForResult(intent, CUSTOMER_CHANGE_PASSWORD_ACTIVITY);
-            }
-        });
+//        btnCusChangePassword.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                Intent intent = new Intent(CustomerMenuActivity.this, StudentChangePasswordActivity.class);
+////                intent.putExtra("CUSTOMER_DATA_FROM_MENU_TO_CHANGE_PASSWORD", customerArr);
+////                startActivityForResult(intent, CUSTOMER_CHANGE_PASSWORD_ACTIVITY);
+//            }
+//        });
 
         //Button View Profile
         btnCusViewProfile.setOnClickListener(new View.OnClickListener() {
@@ -148,12 +148,12 @@ public class CustomerMenuActivity extends AppCompatActivity {
 //                        startActivity(intent1);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
-                    case R.id.it_cus_nav_dra_menu_food_item:
+  //                  case R.id.it_cus_nav_dra_menu_food_item:
 //                        Intent intent2 = new Intent(CustomerMenuActivity.this, StudentReportActivity.class);
 //                        intent2.putExtra("CUSTOMER_DATA_FROM_MENU_TO_REPORT", customerArr);
 //                        startActivity(intent2);
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
+//                        drawerLayout.closeDrawer(GravityCompat.START);
+ //                       break;
                     case R.id.it_cus_nav_dra_menu_cus_profile:
 //                        Intent intent3 = new Intent(CustomerMenuActivity.this, StudentViewProfileActivity.class);
 //                        intent3.putExtra("CUSTOMER_DATA_FROM_MENU_TO_VIEW_PROFILE", customerArr);
@@ -257,8 +257,8 @@ public class CustomerMenuActivity extends AppCompatActivity {
 
         btnCusLogout = findViewById(R.id.btn_cus_logout);
         btnCusViewProfile = findViewById(R.id.btn_cus_view_profile);
-        btnMyBill = findViewById(R.id.btn_cus_update_profile);
-        btnCusChangePassword = findViewById(R.id.btn_cus_change_password);
+        //btnMyBill = findViewById(R.id.btn_cus_update_profile);
+        //btnCusChangePassword = findViewById(R.id.btn_cus_change_password);
         btnBookingRoom = findViewById(R.id.btn_cus_menu_notice);
         btnOrderFood = findViewById(R.id.btn_cus_menu_report);
 

@@ -1,18 +1,5 @@
 package com.xuancanhit.hotelmanagementsystem.ui.activities.admin.customer;
 
-import com.xuancanhit.hotelmanagementsystem.R;
-import com.xuancanhit.hotelmanagementsystem.presentation.model.Customer;
-import com.xuancanhit.hotelmanagementsystem.presentation.retrofit.APIUtils;
-import com.xuancanhit.hotelmanagementsystem.presentation.retrofit.DataClient;
-import com.xuancanhit.hotelmanagementsystem.ui.adapters.CustomerListAdapter;
-import com.xuancanhit.hotelmanagementsystem.ui.tools.DividerItemDecorator;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +9,19 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import com.xuancanhit.hotelmanagementsystem.R;
+import com.xuancanhit.hotelmanagementsystem.presentation.model.Customer;
+import com.xuancanhit.hotelmanagementsystem.presentation.retrofit.APIUtils;
+import com.xuancanhit.hotelmanagementsystem.presentation.retrofit.DataClient;
+import com.xuancanhit.hotelmanagementsystem.ui.adapters.CustomerListAdapter;
+import com.xuancanhit.hotelmanagementsystem.ui.tools.DividerItemDecorator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,14 +99,13 @@ public class AdminCustomerViewAllActivity extends AppCompatActivity {
         textSearch = textSearch.toLowerCase(Locale.getDefault());
         Log.d("filter", textSearch);
         customerArr.clear();
-        if(textSearch.length() == 0) {
+        if (textSearch.length() == 0) {
             customerArr.addAll(customerArrSearch);
             Log.d("load data", "all");
-        }
-        else {
+        } else {
             Log.d("load data", "filtered");
-            for (int i=0; i<customerArrSearch.size(); i++) {
-                if(customerArrSearch.get(i).getCusName().toLowerCase(Locale.getDefault()).contains(textSearch) ||
+            for (int i = 0; i < customerArrSearch.size(); i++) {
+                if (customerArrSearch.get(i).getCusName().toLowerCase(Locale.getDefault()).contains(textSearch) ||
                         customerArrSearch.get(i).getCusAddress().toLowerCase(Locale.getDefault()).contains(textSearch)) {
                     customerArr.add(customerArrSearch.get(i));
                 }

@@ -16,7 +16,7 @@
             style="@style/modifiedEditText"
             android:drawableStart="@drawable/ic_baseline_search_24"
             android:drawableTint="?attr/colorControlNormal"
-            android:hint="Search Name or Address"
+            android:hint="Search"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
