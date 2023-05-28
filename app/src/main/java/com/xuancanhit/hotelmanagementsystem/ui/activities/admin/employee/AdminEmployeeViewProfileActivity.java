@@ -109,11 +109,11 @@ public class AdminEmployeeViewProfileActivity extends AppCompatActivity {
             if (empAvatar != null && !empAvatar.equals("")) {
                 Picasso.get()
                         .load(empAvatar)
-                        .placeholder(R.drawable.admin)
-                        .error(R.drawable.admin)
+                        .placeholder(R.drawable.employees)
+                        .error(R.drawable.employees)
                         .into(ivAdEmpViewProfileAvatar);
             } else {
-                ivAdEmpViewProfileAvatar.setImageResource(R.drawable.admin);
+                ivAdEmpViewProfileAvatar.setImageResource(R.drawable.employees);
             }
         }
     }

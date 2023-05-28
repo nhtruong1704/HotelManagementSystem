@@ -36,10 +36,10 @@ import retrofit2.Response;
 
 public class AdminEmployeeViewAllActivity extends AppCompatActivity {
 
-    ArrayList<Employee> employeeArr, employeeArrSearch;
+    private ArrayList<Employee> employeeArr, employeeArrSearch;
     RecyclerView rvItems;
     SwipeRefreshLayout srlAdEmpViewAll;
-    EmployeeListAdapter employeeListAdapter;
+    private EmployeeListAdapter employeeListAdapter;
 
     ImageButton ibEmpAdd;
     EditText edtEmpViewAllSearch;

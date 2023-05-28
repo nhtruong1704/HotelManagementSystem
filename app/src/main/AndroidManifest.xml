@@ -4,14 +4,17 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_app_icon"
@@ -20,6 +23,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".CustomerRoomViewDetailsActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.activities.admin.employee.AdminEmployeeViewProfileActivity"
             android:exported="false" />
@@ -97,6 +103,9 @@
             android:exported="false" />
         <activity
             android:name=".ui.activities.customer.CustomerMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.customer.CustomerRoomViewDetailsActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activities.customer.CustomerLoginActivity"

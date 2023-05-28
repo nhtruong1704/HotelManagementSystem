@@ -38,10 +38,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -49,6 +46,8 @@ import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+
 
 public class AdminEmployeeAddActivity extends AppCompatActivity {
 
@@ -78,9 +77,6 @@ public class AdminEmployeeAddActivity extends AppCompatActivity {
 
         //Connect layout
         initUI();
-
-
-
 
 
 
@@ -138,7 +134,7 @@ public class AdminEmployeeAddActivity extends AppCompatActivity {
                 employeePosition = edtAdEmpAddPosition.getText().toString();
                 employeeSalary = edtAdEmpAddSalary.getText().toString();
                 employeePhone = edtAdEmpAddPhone.getText().toString();
-                if (employeeName.length() > 0 &&  employeePosition.length() > 0 && employeeSalary.length() > 0&& employeePhone.length() > 0) {
+                if (employeeName.length() > 0 &&  employeePosition.length() > 0 ) {
                         if (!realPath.equals("")) {
                             uploadInfoWithPhoto();
                         } else {
@@ -167,14 +163,14 @@ public class AdminEmployeeAddActivity extends AppCompatActivity {
         if (!realPath.equals("")) {
             callback = insertData.AdminAddEmployeeData(employeeName, employeePosition, employeeSalary, employeePhone, APIUtils.BASE_URL + "images/" + employeeAvatar);
         } else {
-            callback = insertData.AdminAddEmployeeData(employeeName, employeePosition, employeeSalary, employeePhone, "NO_IMAGE_ADD_CUSTOMER");
+            callback = insertData.AdminAddEmployeeData(employeeName, employeePosition, employeeSalary, employeePhone, "NO_IMAGE_ADD_EMPLOYEE");
         }
         callback.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 String result = response.body();
                 Log.d("Ad Emp Add Info", result);
-                if (result.trim().equals("ADD_CUSTOMER_SUCCESSFUL")) {
+                if (result.trim().equals("ADD_EMPLOYEE_SUCCESSFUL")) {
                     Toast.makeText(AdminEmployeeAddActivity.this, "Employee " + employeeName + " Added Successful", Toast.LENGTH_SHORT).show();
                     finish();
                 }

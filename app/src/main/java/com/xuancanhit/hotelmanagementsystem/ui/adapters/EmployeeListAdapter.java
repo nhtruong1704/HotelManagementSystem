@@ -167,12 +167,12 @@ public class EmployeeListAdapter extends RecyclerView.Adapter<EmployeeListAdapte
         holder.tvEmpPosition.setText(employeePosition);
 
         if (employee.getEmpAvatar() == null || employee.getEmpAvatar().equals("")) {
-            holder.ivEmpAvt.setImageResource(R.drawable.admin);
+            holder.ivEmpAvt.setImageResource(R.drawable.employees);
         } else {
             Picasso.get()
                     .load(employee.getEmpAvatar())
-                    .placeholder(R.drawable.admin)
-                    .error(R.drawable.admin)
+                    .placeholder(R.drawable.employees)
+                    .error(R.drawable.employees)
                     .into(holder.ivEmpAvt);
         }
 
