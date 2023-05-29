@@ -141,8 +141,8 @@ import java.util.ArrayList;
 
 
 public class EmployeeListAdapter extends RecyclerView.Adapter<EmployeeListAdapter.EmployeeViewHolder> {
-    private Context context;
-    private ArrayList<Employee> employeeArr;
+    Context context;
+    ArrayList<Employee> employeeArr;
 
     public EmployeeListAdapter(Context context, ArrayList<Employee> employeeArr) {
         this.context = context;
@@ -151,20 +151,17 @@ public class EmployeeListAdapter extends RecyclerView.Adapter<EmployeeListAdapte
 
     @NonNull
     @Override
-    public EmployeeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public EmployeeListAdapter.EmployeeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_employee, parent, false);
-        return new EmployeeViewHolder(itemView);
+        return new EmployeeListAdapter.EmployeeViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull EmployeeViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull EmployeeListAdapter.EmployeeViewHolder holder, int position) {
         Employee employee = employeeArr.get(position);
 
         String employeeName = employee.getEmpName();
         String employeePosition = employee.getEmpPosition();
-
-        holder.tvEmpName.setText(employeeName);
-        holder.tvEmpPosition.setText(employeePosition);
 
         if (employee.getEmpAvatar() == null || employee.getEmpAvatar().equals("")) {
             holder.ivEmpAvt.setImageResource(R.drawable.employees);
@@ -175,6 +172,14 @@ public class EmployeeListAdapter extends RecyclerView.Adapter<EmployeeListAdapte
                     .error(R.drawable.employees)
                     .into(holder.ivEmpAvt);
         }
+
+
+
+
+        holder.tvEmpName.setText(employeeName);
+        holder.tvEmpPosition.setText(employeePosition);
+
+
 
 
         holder.setItemClickListener(new ItemClickListener() {

@@ -141,15 +141,19 @@ public class AdminEmployeeUpdateActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (isEmptyEditText(edtAdEmpUpdateName)) {
                     edtAdEmpUpdateName.setError("Please enter employee's name");
+                    return;
                 }
                 if (isEmptyEditText(edtAdEmpUpdatePosition)) {
                     edtAdEmpUpdatePosition.setError("Please enter employee's position");
+                    return;
                 }
                 if (isEmptyEditText(edtAdEmpUpdateSalary)) {
                     edtAdEmpUpdateSalary.setError("Please enter employee's salary");
+                    return;
                 }
                 if (isEmptyEditText(edtAdEmpUpdatePhone)) {
                     edtAdEmpUpdatePhone.setError("Please enter employee's phone number");
+                    return;
                 }
 
                 employeeName = edtAdEmpUpdateName.getText().toString();
@@ -181,7 +185,6 @@ public class AdminEmployeeUpdateActivity extends AppCompatActivity {
         String currentAvatar;
         if (!employeeArr.get(position).getEmpAvatar().equals("")) {
             currentAvatar = employeeArr.get(position).getEmpAvatar();
-//            Toast.makeText(this, currentAvatar, Toast.LENGTH_SHORT).show();
             currentAvatar = currentAvatar.substring(currentAvatar.lastIndexOf("/"));
         } else {
             currentAvatar = "NO_CURRENT_IMAGE_EMPLOYEE_UPDATE";
@@ -264,22 +267,22 @@ public class AdminEmployeeUpdateActivity extends AppCompatActivity {
                     newAvatar = employeeArr.get(position).getEmpAvatar();
                 } else {
                     currentAvatar = employeeArr.get(position).getEmpAvatar();
-                    currentAvatar = currentAvatar.substring(currentAvatar.lastIndexOf("/"));
-                    newAvatar = APIUtils.BASE_URL + "images/" + employeeAvatar;
+                    currentAvatar = currentAvatar.substring(currentAvatar.lastIndexOf("/")+1);
+                    newAvatar = APIUtils.BASE_URL + "admin/employee/images/" + employeeAvatar;
                 }
             }
 
             DataClient insertData = APIUtils.getData();
             Call<String> callbackInfo = insertData.AdminUpdateEmployeeData(employeeArr.get(position).getEmpId(),
                     employeeName, employeePosition, employeeSalary, employeePhone, newAvatar, currentAvatar);
-            if (position < employeeArr.size()) {
+  //          if (position < employeeArr.size()) {
                 employeeArr.get(position).setEmpName(employeeName);
                 employeeArr.get(position).setEmpPosition(employeePosition);
                 employeeArr.get(position).setEmpSalary(employeeSalary);
                 employeeArr.get(position).setEmpPhone(employeePhone);
                 employeeArr.get(position).setEmpAvatar(newAvatar);
 
-            }
+      //      }
             callbackInfo.enqueue(new Callback<String>() {
                 @Override
                 public void onResponse(Call<String> call, Response<String> response) {
@@ -451,5 +454,6 @@ public class AdminEmployeeUpdateActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         backToMenu();
+        super.onBackPressed();
     }
 }

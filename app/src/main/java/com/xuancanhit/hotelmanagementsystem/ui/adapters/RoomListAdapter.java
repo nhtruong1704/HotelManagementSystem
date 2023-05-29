@@ -70,9 +70,7 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.RoomVi
                     Toast.makeText(context, "Room " + room.getRoomName(), Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(view.getContext(), AdminRoomViewDetailsActivity.class);
-
                     Bundle bundle = new Bundle();
-
                     bundle.putParcelableArrayList("ROOM_DATA_ARRAY", roomArr);
                     bundle.putInt("ROOM_DATA_POSITION", position);
                     intent.putExtra("ROOM_DATA_FROM_ROOM_ADAPTER_TO_AD_ROOM_VIEW_DETAILS", bundle);

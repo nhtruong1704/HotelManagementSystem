@@ -134,7 +134,7 @@ public class AdminEmployeeAddActivity extends AppCompatActivity {
                 employeePosition = edtAdEmpAddPosition.getText().toString();
                 employeeSalary = edtAdEmpAddSalary.getText().toString();
                 employeePhone = edtAdEmpAddPhone.getText().toString();
-                if (employeeName.length() > 0 &&  employeePosition.length() > 0 ) {
+                if (employeeName.length() > 0 &&  employeePosition.length() > 0 && employeeSalary.length() > 0) {
                         if (!realPath.equals("")) {
                             uploadInfoWithPhoto();
                         } else {
@@ -161,7 +161,7 @@ public class AdminEmployeeAddActivity extends AppCompatActivity {
         DataClient insertData = APIUtils.getData();
         Call<String> callback;
         if (!realPath.equals("")) {
-            callback = insertData.AdminAddEmployeeData(employeeName, employeePosition, employeeSalary, employeePhone, APIUtils.BASE_URL + "images/" + employeeAvatar);
+            callback = insertData.AdminAddEmployeeData(employeeName, employeePosition, employeeSalary, employeePhone, APIUtils.BASE_URL + "admin/employee/images/" + employeeAvatar);
         } else {
             callback = insertData.AdminAddEmployeeData(employeeName, employeePosition, employeeSalary, employeePhone, "NO_IMAGE_ADD_EMPLOYEE");
         }

@@ -134,35 +134,7 @@ public interface DataClient {
                                          @Field("CustomerGender") String CustomerGender);
 
 
-    //Room
-    @POST("admin/room/viewAllRoom.php")
-    Call<List<Room>> AdminViewAllRoomData();
 
-    @FormUrlEncoded
-    @POST("admin/room/addRoom.php")
-    Call<String> AdminAddRoomData(
-            @Field("RoomName") String RoomName,
-            @Field("RoomPrice") String RoomPrice,
-            @Field("RoomDes") String RoomDes,
-            @Field("RoomImage") String RoomImage);
-
-    @Multipart
-    @POST("admin/room/uploadImage.php")
-    Call<String> UploadRoomPhoto(@Part MultipartBody.Part photo);
-
-    @GET("admin/room/delete.php")
-    Call<String> DeleteRoomData(@Query("RoomId") String RoomId, @Query("RoomImage") String RoomImage);
-
-
-    //Update
-    @FormUrlEncoded
-    @POST("admin/room/updateRoom.php")
-    Call<String> AdminUpdateRoomData(@Field("RoomId") String RoomId,
-                                     @Field("RoomName") String RoomName,
-                                     @Field("RoomPrice") String RoomPrice,
-                                     @Field("RoomDes") String RoomDes,
-                                     @Field("RoomImage") String RoomImage,
-                                     @Field("RoomCurrentImage") String RoomCurrentImage);
 
 
     //Food
@@ -224,6 +196,38 @@ public interface DataClient {
                                          @Field("EmployeePhone") String EmployeePhone,
                                          @Field("EmployeeAvatar") String EmployeeAvatar,
                                          @Field("EmployeeCurrentAvatar") String EmployeeCurrentAvatar);
+
+
+
+    //Room
+    @POST("admin/room/viewAllRoom.php")
+    Call<List<Room>> AdminViewAllRoomData();
+
+    @FormUrlEncoded
+    @POST("admin/room/addRoom.php")
+    Call<String> AdminAddRoomData(
+            @Field("RoomName") String RoomName,
+            @Field("RoomPrice") String RoomPrice,
+            @Field("RoomDes") String RoomDes,
+            @Field("RoomImage") String RoomImage);
+
+    @Multipart
+    @POST("admin/room/uploadImage.php")
+    Call<String> UploadRoomPhoto(@Part MultipartBody.Part photo);
+
+    @GET("admin/room/delete.php")
+    Call<String> DeleteRoomData(@Query("RoomId") String RoomId, @Query("RoomImage") String RoomImage);
+
+
+    //Update
+    @FormUrlEncoded
+    @POST("admin/room/updateRoom.php")
+    Call<String> AdminUpdateRoomData(@Field("RoomId") String RoomId,
+                                     @Field("RoomName") String RoomName,
+                                     @Field("RoomPrice") String RoomPrice,
+                                     @Field("RoomDes") String RoomDes,
+                                     @Field("RoomImage") String RoomImage,
+                                     @Field("RoomCurrentImage") String RoomCurrentImage);
 
 
 

@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: com.google.protobuf:protobuf-java:3.11.4">
+  <library name="Gradle: com.google.protobuf:protobuf-java:3.11.4" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.protobuf/protobuf-java/3.11.4/7ec0925cc3aef0335bbc7d57edfd42b0f86f8267/protobuf-java-3.11.4.jar!/" />
     </CLASSES>

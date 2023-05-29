@@ -44,7 +44,7 @@ public class AdminEmployeeViewAllActivity extends AppCompatActivity {
     ImageButton ibEmpAdd;
     EditText edtEmpViewAllSearch;
 
-    @SuppressLint("MissingInflatedId")
+    //@SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
