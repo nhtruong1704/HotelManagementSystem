@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.xuancanhit.hotelmanagementsystem.R;
 import com.xuancanhit.hotelmanagementsystem.presentation.model.Customer;
+import com.xuancanhit.hotelmanagementsystem.ui.activities.admin.customer.AdminCustomerUpdateActivity;
+import com.xuancanhit.hotelmanagementsystem.ui.activities.admin.customer.AdminCustomerViewProfileActivity;
 
 import java.util.ArrayList;
 
@@ -59,17 +61,34 @@ CustomerViewProfileActivity extends AppCompatActivity {
             }
         });
 
-        //Button update
+       // Button update
         btnCusViewProfileUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(CustomerViewProfileActivity.this, CustomerUpdateActivity.class);
-//                //Replace CUSTOMER_DATA_FROM_MENU_TO_UPDATE for CUSTOMER_DATA_FROM_VIEW_PROFILE_TO_UPDATE
-//                //Update just receive 1 time
-//                intent.putExtra("CUSTOMER_DATA_FROM_MENU_TO_UPDATE", customerArr);
-//                startActivityForResult(intent, CUSTOMER_UPDATE);
+                Intent intent = new Intent(CustomerViewProfileActivity.this, CustomerUpdateActivity.class);
+
+                //Replace CUSTOMER_DATA_FROM_MENU_TO_UPDATE for CUSTOMER_DATA_FROM_VIEW_PROFILE_TO_UPDATE
+                //Update just receive 1 time
+                intent.putExtra("CUSTOMER_DATA_FROM_VIEW_PROFILE_TO_UPDATE", customerArr);
+                startActivityForResult(intent, CUSTOMER_UPDATE);
             }
         });
+
+//        btnCusViewProfileUpdate.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(CustomerViewProfileActivity.this, CustomerUpdateActivity.class);
+//                Bundle bundle = new Bundle();
+//                bundle.putParcelableArrayList("CUSTOMER_DATA_ARRAY", customerArr);
+//                bundle.putInt("CUSTOMER_DATA_POSITION",customerArr.get(0));
+//                intent.putExtra("CUSTOMER_DATA_FROM_AD_CUSTOMER_VIEW_PROFILE_TO_UPDATE", bundle);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
+
+
+
     }
 
 
@@ -96,43 +115,103 @@ CustomerViewProfileActivity extends AppCompatActivity {
         finish();
     }
 
+//    @SuppressLint("SetTextI18n")
+//    private void initView() {
+//        tvCusViewProfileName.setText(customerArr.get(0).getCusName());
+//        tvCusViewProfileAddress.setText(customerArr.get(0).getCusAddress());
+//        tvCusViewProfileDOB.setText(customerArr.get(0).getCusDOB());
+//        tvCusViewProfilePhone.setText(customerArr.get(0).getCusPhone());
+//        tvCusViewProfileEmail.setText(customerArr.get(0).getCusEmail());
+//        if (customerArr.get(0).getCusGender().equals("1")) {
+//            tvCusViewProfileGender.setText("Male");
+//        } else if (customerArr.get(0).getCusGender().equals("0")) {
+//            tvCusViewProfileGender.setText("Female");
+//        }
+//
+//        if (customerArr.get(0).getCusIsVip().equals("1")) {
+//            ivCusViewProfileVip.setImageResource(R.drawable.vip_card);
+//        }
+//        else
+//            ivCusViewProfileVip.setImageResource(R.drawable.transparent);
+//
+//        if (!customerArr.get(0).getCusAvatar().equals("")) {
+//            Picasso.get()
+//                    .load(customerArr.get(0).getCusAvatar())
+//                    .placeholder(R.drawable.admin)
+//                    .error(R.drawable.admin)
+//                    .into(ivCusViewProfileAvatar);
+//        } else {
+//            if (!customerArr.get(0).getCusGender().equals("-1")) {
+//                if (customerArr.get(0).getCusGender().equals("1")) {
+//                    ivCusViewProfileAvatar.setImageResource(R.drawable.male);
+//                } else {
+//                    ivCusViewProfileAvatar.setImageResource(R.drawable.female);
+//                }
+//            } else {
+//                ivCusViewProfileAvatar.setImageResource(R.drawable.review);
+//            }
+//        }
+//    }
+
+
+
     @SuppressLint("SetTextI18n")
     private void initView() {
-        tvCusViewProfileName.setText(customerArr.get(0).getCusName());
-        tvCusViewProfileAddress.setText(customerArr.get(0).getCusAddress());
-        tvCusViewProfileDOB.setText(customerArr.get(0).getCusDOB());
-        tvCusViewProfilePhone.setText(customerArr.get(0).getCusPhone());
-        tvCusViewProfileEmail.setText(customerArr.get(0).getCusEmail());
-        if (customerArr.get(0).getCusGender().equals("1")) {
-            tvCusViewProfileGender.setText("Male");
-        } else if (customerArr.get(0).getCusGender().equals("0")) {
-            tvCusViewProfileGender.setText("Female");
-        }
+        if (customerArr != null && customerArr.size() > 0) {
+            tvCusViewProfileName.setText(customerArr.get(0).getCusName());
+            tvCusViewProfileAddress.setText(customerArr.get(0).getCusAddress());
+            tvCusViewProfileDOB.setText(customerArr.get(0).getCusDOB());
+            tvCusViewProfilePhone.setText(customerArr.get(0).getCusPhone());
+            tvCusViewProfileEmail.setText(customerArr.get(0).getCusEmail());
 
-        if (customerArr.get(0).getCusIsVip().equals("1")) {
-            ivCusViewProfileVip.setImageResource(R.drawable.vip_card);
-        }
-        else
-            ivCusViewProfileVip.setImageResource(R.drawable.transparent);
-
-        if (!customerArr.get(0).getCusAvatar().equals("")) {
-            Picasso.get()
-                    .load(customerArr.get(0).getCusAvatar())
-                    .placeholder(R.drawable.admin)
-                    .error(R.drawable.admin)
-                    .into(ivCusViewProfileAvatar);
-        } else {
-            if (!customerArr.get(0).getCusGender().equals("-1")) {
-                if (customerArr.get(0).getCusGender().equals("1")) {
-                    ivCusViewProfileAvatar.setImageResource(R.drawable.male);
-                } else {
-                    ivCusViewProfileAvatar.setImageResource(R.drawable.female);
+            String gender = customerArr.get(0).getCusGender();
+            if (gender != null) {
+                if (gender.equals("1")) {
+                    tvCusViewProfileGender.setText("Male");
+                } else if (gender.equals("0")) {
+                    tvCusViewProfileGender.setText("Female");
                 }
+            }
+
+            String isVip = customerArr.get(0).getCusIsVip();
+            if (isVip != null) {
+                if (isVip.equals("1")) {
+                    ivCusViewProfileVip.setImageResource(R.drawable.vip_card);
+                } else {
+                    ivCusViewProfileVip.setImageResource(R.drawable.transparent);
+                }
+            }
+
+            String avatar = customerArr.get(0).getCusAvatar();
+            if (avatar != null && !avatar.equals("")) {
+                Picasso.get()
+                        .load(avatar)
+                        .placeholder(R.drawable.admin)
+                        .error(R.drawable.admin)
+                        .into(ivCusViewProfileAvatar);
             } else {
-                ivCusViewProfileAvatar.setImageResource(R.drawable.review);
+                String cusGender = customerArr.get(0).getCusGender();
+                if (cusGender != null && !cusGender.equals("-1")) {
+                    if (cusGender.equals("1")) {
+                        ivCusViewProfileAvatar.setImageResource(R.drawable.male);
+                    } else {
+                        ivCusViewProfileAvatar.setImageResource(R.drawable.female);
+                    }
+                } else {
+                    ivCusViewProfileAvatar.setImageResource(R.drawable.review);
+                }
             }
         }
     }
+
+
+
+
+
+
+
+
+
 
     private void receiveDataFromMenu() {
         Intent intent = getIntent();

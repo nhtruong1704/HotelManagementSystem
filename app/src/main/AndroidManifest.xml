@@ -42,15 +42,6 @@
             android:name=".MainActivitytest"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.customer.CustomerFoodItemViewAllActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.activities.customer.CustomerRoomViewAllActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.activities.customer.CustomerViewProfileActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.activities.admin.fooditem.AdminFoodItemUpdateActivity"
             android:exported="false" />
         <activity
@@ -110,6 +101,18 @@
         <activity
             android:name=".ui.activities.customer.CustomerLoginActivity"
             android:exported="true" />
+        <activity
+            android:name=".ui.activities.customer.CustomerFoodItemViewAllActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.customer.CustomerRoomViewAllActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.customer.CustomerViewProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.customer.CustomerUpdateActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

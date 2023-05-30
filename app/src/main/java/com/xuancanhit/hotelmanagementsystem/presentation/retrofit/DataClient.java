@@ -45,7 +45,6 @@ public interface DataClient {
                                     @Field("CustomerPhone") String CustomerPhone,
                                    @Field("CustomerDOB") String CustomerDOB,
                                    @Field("CustomerAddress") String CustomerAddress,
-
                                    @Field("CustomerEmail") String CustomerEmail,
                                    @Field("CustomerAvatar") String CustomerAvatar,
                                    @Field("CustomerGender") String CustomerGender,

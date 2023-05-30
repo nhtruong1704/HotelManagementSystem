@@ -152,7 +152,7 @@
             android:layout_marginTop="@dimen/loginViewsMargin">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_cus_update_class"
+                android:id="@+id/edt_cus_update_address"
                 style="@style/modifiedEditText"
                 android:drawableStart="@drawable/ic_baseline_class_24"
                 android:drawableTint="?attr/colorControlNormal"

@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,8 +19,12 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
@@ -27,13 +32,17 @@ import com.xuancanhit.hotelmanagementsystem.R;
 import com.xuancanhit.hotelmanagementsystem.presentation.model.Customer;
 import com.xuancanhit.hotelmanagementsystem.presentation.retrofit.APIUtils;
 import com.xuancanhit.hotelmanagementsystem.presentation.retrofit.DataClient;
+import com.xuancanhit.hotelmanagementsystem.ui.activities.admin.customer.AdminCustomerUpdateActivity;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -54,10 +63,16 @@ public class CustomerUpdateActivity extends AppCompatActivity {
     String realPath = "";
     Uri imageUri;
 
-    EditText edtCustomerUpdateEmail, edtCustomerUpdateName, edtCustomerUpdatePhone;
+    EditText edtCustomerUpdateEmail, edtCustomerUpdateName, edtCustomerUpdatePhone,edtCustomerUpdateDOB,edtCustomerUpdateAddress;
     Button btnCustomerUpdateTakePhoto, btnCustomerUpdateChoosePhoto, btnCustomerUpdateSave, btnCustomerUpdateDelete, btnCustomerUpdateExit, btnCustomerChangePassword;
     ImageView ivCustomerUpdateAvatar, ivCustomerUpdateExit;
+    private ImageButton imBtnCustomerUpdateDelDOB;
+    private RadioGroup rgCustomerUpdateGender, rgCustomerUpdateStatus;
+    private RadioButton rbCustomerUpdateMale, rbCustomerUpdateFemale, rbCustomerUpdateActive, rbCustomerUpdateInactive;
+    String updateGender = "1", isVip = "0";
 
+    //for date of birth
+    final Calendar calendar = Calendar.getInstance();
     ArrayList<Customer> customerArr;
     String customerEmail, customerName, customerAvatar, customerPhone, customerAddress,customerDOB,customerGender;
 
@@ -69,7 +84,18 @@ public class CustomerUpdateActivity extends AppCompatActivity {
         //Connect layout
         initUI();
         //Set on Views
+
+
+
         initView();
+
+
+        imBtnCustomerUpdateDelDOB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edtCustomerUpdateDOB.setText("");
+            }
+        });
 
         //Button Delete
         btnCustomerUpdateDelete.setOnClickListener(new View.OnClickListener() {
@@ -97,14 +123,43 @@ public class CustomerUpdateActivity extends AppCompatActivity {
         });
 
         //Button Change Password
-        btnCustomerChangePassword.setOnClickListener(new View.OnClickListener() {
+//        btnCustomerChangePassword.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(CustomerUpdateActivity.this, CustomerChangePasswordActivity.class);
+//                intent.putExtra("CUSTOMER_DATA_FROM_UPDATE_TO_CHANGE_PASSWORD", customerArr);
+//                startActivityForResult(intent, CUSTOMER_CHANGE_PASSWORD_ACTIVITY);
+//            }
+//        });
+
+        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, month);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel();
+            }
+        };
+        edtCustomerUpdateDOB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CustomerUpdateActivity.this, CustomerChangePasswordActivity.class);
-                intent.putExtra("CUSTOMER_DATA_FROM_UPDATE_TO_CHANGE_PASSWORD", customerArr);
-                startActivityForResult(intent, CUSTOMER_CHANGE_PASSWORD_ACTIVITY);
+                new DatePickerDialog(CustomerUpdateActivity.this, date, calendar
+                        .get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+        rgCustomerUpdateGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.rb_cus_update_male) {
+                    updateGender = "1";
+                } else {
+                    updateGender = "0";
+                }
+            }
+        });
+
 
         //Button Save
         btnCustomerUpdateSave.setOnClickListener(new View.OnClickListener() {
@@ -121,6 +176,9 @@ public class CustomerUpdateActivity extends AppCompatActivity {
                     customerName = edtCustomerUpdateName.getText().toString();
                     customerEmail = edtCustomerUpdateEmail.getText().toString();
                     customerPhone = edtCustomerUpdatePhone.getText().toString();
+                    customerDOB = edtCustomerUpdateDOB.getText().toString();
+                    customerAddress = edtCustomerUpdateAddress.getText().toString();
+
                     if (customerName.length() > 0 && customerEmail.length() > 0) {
                         if (!realPath.equals("")) {
                             uploadInfoWithPhoto();
@@ -261,7 +319,7 @@ public class CustomerUpdateActivity extends AppCompatActivity {
                 newAvatar = customerArr.get(0).getCusAvatar();
             } else {
                 currentAvatar = customerArr.get(0).getCusAvatar();
-                currentAvatar = currentAvatar.substring(currentAvatar.lastIndexOf("/"));
+                currentAvatar = currentAvatar.substring(currentAvatar.lastIndexOf("/")+1);
                 newAvatar = APIUtils.BASE_URL + "customer/images/" + customerAvatar;
             }
         }
@@ -289,26 +347,107 @@ public class CustomerUpdateActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Log.d("Error Updated Customer Info", t.getMessage());
+                Log.d("Error Updated Cus Info", t.getMessage());
             }
         });
     }
 
 
+//    private void initView() {
+//        Intent intent = getIntent();
+//        customerArr = intent.getParcelableArrayListExtra("CUSTOMER_DATA_FROM_VIEW_PROFILE_TO_UPDATE");
+//        edtCustomerUpdateName.setText(customerArr.get(0).getCusName());
+//        edtCustomerUpdateEmail.setText(customerArr.get(0).getCusEmail());
+//        edtCustomerUpdatePhone.setText(customerArr.get(0).getCusPhone());
+//        if (!customerArr.get(0).getCusAvatar().equals("")) {
+//            Picasso.get()
+//                    .load(customerArr.get(0).getCusAvatar())
+//                    .placeholder(R.drawable.admin)
+//                    .error(R.drawable.admin)
+//                    .into(ivCustomerUpdateAvatar);
+//        }
+//    }
+
+//    private void initView() {
+//        Intent intent = getIntent();
+//        customerArr = intent.getParcelableArrayListExtra("CUSTOMER_DATA_FROM_VIEW_PROFILE_TO_UPDATE");
+//
+//        if (customerArr != null && customerArr.size() > 0) {
+//            edtCustomerUpdateName.setText(customerArr.get(0).getCusName());
+//            edtCustomerUpdateEmail.setText(customerArr.get(0).getCusEmail());
+//            edtCustomerUpdatePhone.setText(customerArr.get(0).getCusPhone());
+//            if (!customerArr.get(0).getCusAvatar().equals("")) {
+//                Picasso.get()
+//                        .load(customerArr.get(0).getCusAvatar())
+//                        .placeholder(R.drawable.review)
+//                        .error(R.drawable.review)
+//                        .into(ivCustomerUpdateAvatar);
+//            }
+//        }
+//    }
+
     private void initView() {
         Intent intent = getIntent();
-        customerArr = intent.getParcelableArrayListExtra("CUSTOMER_DATA_FROM_MENU_TO_UPDATE");
-        edtCustomerUpdateName.setText(customerArr.get(0).getCusName());
-        edtCustomerUpdateEmail.setText(customerArr.get(0).getCusEmail());
-        edtCustomerUpdatePhone.setText(customerArr.get(0).getCusPhone());
-        if (!customerArr.get(0).getCusAvatar().equals("")) {
-            Picasso.get()
-                    .load(customerArr.get(0).getCusAvatar())
-                    .placeholder(R.drawable.admin)
-                    .error(R.drawable.admin)
-                    .into(ivCustomerUpdateAvatar);
+        customerArr = intent.getParcelableArrayListExtra("CUSTOMER_DATA_FROM_VIEW_PROFILE_TO_UPDATE");
+        if (customerArr != null && customerArr.size() > 0) {
+            edtCustomerUpdateName.setText(customerArr.get(0).getCusName());
+            edtCustomerUpdateDOB.setText(customerArr.get(0).getCusDOB());
+            edtCustomerUpdatePhone.setText(customerArr.get(0).getCusPhone());
+            edtCustomerUpdateEmail.setText(customerArr.get(0).getCusEmail());
+            edtCustomerUpdateAddress.setText(customerArr.get(0).getCusAddress());
+
+
+            if (!customerArr.get(0).getCusGender().equals("-1")) {
+                if (customerArr.get(0).getCusGender().equals("1")) {
+                    rbCustomerUpdateMale.setChecked(true);
+                    updateGender = "1";
+                } else {
+                    rbCustomerUpdateFemale.setChecked(true);
+                    updateGender = "0";
+                }
+            }
+
+//
+//            if (customerArr.get(0).getCusIsVip().equals("1")) {
+//                rbCustomerUpdateActive.setChecked(true);
+//                isVip = "1";
+//            } else {
+//                rbCustomerUpdateInactive.setChecked(true);
+//                isVip = "0";
+//            }
+
+
+            if (!customerArr.get(0).getCusAvatar().equals("")) {
+                Picasso.get()
+                        .load(customerArr.get(0).getCusAvatar())
+                        .placeholder(R.drawable.review)
+                        .error(R.drawable.review)
+                        .into(ivCustomerUpdateAvatar);
+            } else {
+                if (!customerArr.get(0).getCusGender().equals("-1")) {
+                    if (customerArr.get(0).getCusGender().equals("1")) {
+                        ivCustomerUpdateAvatar.setImageResource(R.drawable.male);
+                    } else {
+                        ivCustomerUpdateAvatar.setImageResource(R.drawable.female);
+                    }
+                } else {
+                    ivCustomerUpdateAvatar.setImageResource(R.drawable.review);
+                }
+            }
         }
     }
+
+
+
+
+
+
+    private void updateLabel() {
+        String myFormat = "MM/dd/yyyy";
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        edtCustomerUpdateDOB.setText(sdf.format(calendar.getTime()));
+    }
+
 
     private void takePhoto() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -376,6 +515,8 @@ public class CustomerUpdateActivity extends AppCompatActivity {
         edtCustomerUpdateEmail = findViewById(R.id.edt_cus_update_email);
         edtCustomerUpdateName = findViewById(R.id.edt_cus_update_name);
         edtCustomerUpdatePhone = findViewById(R.id.edt_cus_update_phone);
+        edtCustomerUpdateDOB = findViewById(R.id.edt_cus_update_dob);
+        edtCustomerUpdateAddress = findViewById(R.id.edt_cus_update_address);
         btnCustomerUpdateChoosePhoto = findViewById(R.id.btn_cus_update_choose_photo);
         btnCustomerUpdateTakePhoto = findViewById(R.id.btn_cus_update_take_photo);
         btnCustomerUpdateSave = findViewById(R.id.btn_cus_update_save);
@@ -383,6 +524,10 @@ public class CustomerUpdateActivity extends AppCompatActivity {
         btnCustomerUpdateExit = findViewById(R.id.btn_cus_update_exit);
         ivCustomerUpdateAvatar = findViewById(R.id.iv_cus_update_avt);
         ivCustomerUpdateExit = findViewById(R.id.iv_cus_update_exit);
+        rgCustomerUpdateGender = findViewById(R.id.rg_cus_update_gender);
+        imBtnCustomerUpdateDelDOB = findViewById(R.id.im_btn_cus_update_del_dob);
+        rbCustomerUpdateMale = findViewById(R.id.rb_cus_update_male);
+        rbCustomerUpdateFemale = findViewById(R.id.rb_cus_update_female);
     }
 
     // Get Real Path when upload photo(from uri - image/mame_image)
